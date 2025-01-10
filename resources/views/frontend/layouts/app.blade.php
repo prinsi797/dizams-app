@@ -38,7 +38,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/slick-theme.css') }}">
 
     <!--bootstrap.min.css-->
-    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}"> --}}
 
     <!-- bootsnav -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootsnav.css') }}">
@@ -48,26 +49,29 @@
 
     <!--responsive.css-->
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
+    {{-- @stack('scripts') --}}
 </head>
 
 <body>
     <!-- top-area Start -->
     @include('frontend.layouts.header')
-    <!-- /.top-area-->
-    <!-- top-area End -->
-
+   
     <!--welcome-hero start -->
     <main>
         @yield('content')
-        <!--subscription end -->
 
     </main>
     @include('frontend.layouts.footer')
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
     <script src="assets/js/jquery.js"></script>
     <!--modernizr.min.js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
     <!--bootstrap.min.js-->
-    <script src="assets/js/bootstrap.min.js"></script>
     <!-- bootsnav js -->
     <script src="assets/js/bootsnav.js"></script>
     <!--feather.min.js-->

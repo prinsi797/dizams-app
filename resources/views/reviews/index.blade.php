@@ -2,8 +2,16 @@
 
 @section('content')
     <div class="container">
-        <h1>Reviews</h1>
-        <a href="{{ route('reviews.create') }}" class="btn btn-primary mb-3">+</a>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3>Reviews</h3>
+            <a href="{{ route('reviews.create') }}" class="btn btn-primary"> <b>+</b></a>
+        </div>
+    
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -29,7 +37,7 @@
                         </td>
                         <td>
                             {{-- <a href="{{ route('reviews.show', $review) }}" class="btn btn-info btn-sm">View</a> --}}
-                            <a href="{{ route('reviews.edit', $review) }}" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="{{ route('reviews.edit', $review) }}" class="btn btn-secondary btn-sm">Edit</a>
                             <form action="{{ route('reviews.destroy', $review) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')

@@ -24,7 +24,7 @@
                         <li class="scroll"><a href="#explore">explore</a></li>
                         <li class="scroll"><a href="#reviews">review</a></li>
                         <li class="scroll"><a href="resume.html">Resume Writing</a></li>
-                        <li class="scroll"><a href="#contact">contact</a></li>
+                        <li class="scroll"><a href="{{ route('contact') }}">Contact</a></li>
                     </ul><!--/.nav -->
                 </div><!-- /.navbar-collapse -->
             </div><!--/.container-->

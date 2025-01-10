@@ -11,24 +11,23 @@
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
-            <nav class="col-md-3 bg-light sidebar p-3">
-                <h5>Sidebar</h5>
+            <nav class="col-md-3 bg-light sidebar p-3" style="height: 650px;">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
+                        <a class="nav-link" href="{{ route('dashboard') }}">
+                            <img src="{{ asset('assets/images/favicon.png') }}" alt="Icon"
+                                style="width: 70px; height: 30px;"></a>
                     </li>
 
-                    @if (Auth::user() && Auth::user()->role === 'admin')
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('users.index') }}">Users</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('categories.index') }}">Categories</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('posts.index') }}">Posts</a>
-                        </li>
-                    @endif
+                    {{-- @if (Auth::user() && Auth::user()->role === 'admin') --}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('users.index') }}">Users</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('reviews.index') }}">Reviews</a>
+                    </li>
+                    {{-- @endif --}}
 
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}"
