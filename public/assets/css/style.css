@@ -921,7 +921,40 @@ nav.navbar.bootsnav .navbar-toggle i {
         8. Reviews
 --------------------------------------*/
 .reviews {
-    padding: 117px 0 75px;
+    padding: 0px 0 75px;
+}
+#testimonial-carousel {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    background: #f9f9f9;
+    padding: 20px 0;
+}
+
+.testimonial-wrapper {
+    display: flex;
+    gap: 20px;
+    animation: scroll-left 20s linear infinite;
+}
+
+.single-testimonial-box {
+    min-width: 33%; /* 3 items in one row */
+    box-sizing: border-box;
+    padding: 20px;
+    background: white;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Animation for scrolling */
+@keyframes scroll-left {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
 }
 
 .reviews-content {

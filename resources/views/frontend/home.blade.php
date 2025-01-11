@@ -348,38 +348,33 @@
             <p>What our clients say about us</p>
         </div>
         <div class="reviews-content">
-            <div class="testimonial-carousel">
-                <div class="row">
+            <div class="testimonial-carousel" id="testimonial-carousel">
+                <div class="testimonial-wrapper">
                     @foreach ($reviews as $review)
-                        <div class=" col-md-4 col-sm-6">
-                            <div class="single-testimonial-box">
-                                <div class="testimonial-description">
-                                    <div class="testimonial-info">
-                                        <div class="testimonial-img">
-                                            <img class="review-image"
-                                                src="{{ $review->image ? asset('storage/' . $review->image) : asset('assets/images/avatar.png') }}"
-                                                alt="{{ $review->name ?? 'Default Avatar' }}"
-                                                class="w-10 h-10 rounded-full">
-
-                                            {{-- <img src="{{ asset('storage/' . $review->image) }}" alt="{{ $review->name }}"> --}}
-                                        </div>
-                                        <div class="testimonial-person">
-                                            <h2>{{ $review->name }}</h2>
-                                            <h4>{{ $review->location }}</h4><br>
-                                            <p>{{ $review->description }}</p>
-                                            <div class="testimonial-person-star">
-                                                @for ($i = 1; $i <= $review->rating; $i++)
-                                                    <i class="fa fa-star"></i>
-                                                @endfor
-                                                @for ($i = $review->rating + 1; $i <= 5; $i++)
-                                                    <i class="fa fa-star-o"></i>
-                                                @endfor
-                                            </div>
+                        <div class="single-testimonial-box">
+                            <div class="testimonial-description">
+                                <div class="testimonial-info">
+                                    <div class="testimonial-img">
+                                        <img class="review-image"
+                                            src="{{ $review->image ? asset('storage/' . $review->image) : asset('assets/images/avatar.png') }}"
+                                            alt="{{ $review->name ?? 'Default Avatar' }}">
+                                    </div>
+                                    <div class="testimonial-person">
+                                        <h2>{{ $review->name }}</h2>
+                                        <h4>{{ $review->location }}</h4><br>
+                                        <p>{{ $review->description }}</p>
+                                        <div class="testimonial-person-star">
+                                            @for ($i = 1; $i <= $review->rating; $i++)
+                                                <i class="fa fa-star"></i>
+                                            @endfor
+                                            @for ($i = $review->rating + 1; $i <= 5; $i++)
+                                                <i class="fa fa-star-o"></i>
+                                            @endfor
                                         </div>
                                     </div>
-                                    <div class="testimonial-comment">
-                                        <p>{{ $review->review }}</p>
-                                    </div>
+                                </div>
+                                <div class="testimonial-comment">
+                                    <p>{{ $review->review }}</p>
                                 </div>
                             </div>
                         </div>
@@ -387,6 +382,7 @@
                 </div>
             </div>
         </div>
+        
     </section>
 
     <!--reviews end -->
@@ -493,9 +489,7 @@
                 </div>
             </div>
         </div>
-
-    </section><!--/.blog-->
-    <!--blog end -->
+    </section>
 
     <!--subscription strat -->
     <section id="contact" class="subscription">
@@ -564,8 +558,19 @@
         </div>
     </div>
     <script>
-        // Show the popup when the "Subscribe" button is clicked
-        // Show the popup when the "Manage Subscription" button is clicked
+        document.addEventListener("DOMContentLoaded", function () {
+            const wrapper = document.querySelector(".testimonial-wrapper");
+            const testimonials = wrapper.innerHTML;
+            wrapper.innerHTML += testimonials;
+            wrapper.addEventListener("animationiteration", () => {
+                wrapper.style.animation = "none";
+                wrapper.offsetHeight;
+                wrapper.style.animation = "";
+            });
+        });
+    </script>
+    
+    <script>
         document.getElementById('manageSubscriptionButton').addEventListener('click', function() {
             document.getElementById('manageSubscriptionPopup').style.display = 'block';
         });
@@ -579,8 +584,6 @@
         document.getElementById('closeReasonPopup').addEventListener('click', function() {
             document.getElementById('unsubscribeReasonPopup').style.display = 'none';
         });
-
-        // Subscribe button logic
         document.getElementById('subscribeButton').addEventListener('click', function() {
             const formElement = document.getElementById('mainForm');
             if (!formElement) {
