@@ -69,8 +69,8 @@
                 <label for="resume">Resume (PDF):</label>
                 <input type="file" id="resume" name="resume" accept=".pdf" class="form-control" required>
 
-                <label for="job_description">Job Description:</label>
-                <textarea id="job_description" name="job_description" class="form-control" rows="4" required></textarea>
+                <label for="job_description">Job Description (Optional):</label>
+                <textarea id="job_description" name="job_description" class="form-control" rows="4"></textarea>
 
                 <button type="submit">Submit Resume</button>
             </form>
@@ -84,46 +84,38 @@
                     <li>
                         <div class="single-list-topics-content">
                             <div class="single-list-topics-icon">
-                                <i class="flaticon-restaurant"></i>
+                                <i class="fa fa-book icon"></i>
+                                {{-- <i class="flaticon-restaurant"></i> --}}
                             </div>
-                            <h2><a href="#">resturent</a></h2>
+                            <h2><a href="#">resume writing</a></h2>
                             <p>150 listings</p>
                         </div>
                     </li>
                     <li>
                         <div class="single-list-topics-content">
                             <div class="single-list-topics-icon">
-                                <i class="flaticon-travel"></i>
+                                <i class="fa fa-briefcase"></i>
                             </div>
-                            <h2><a href="#">destination</a></h2>
+                            <h2><a href="#">job openings</a></h2>
                             <p>214 listings</p>
                         </div>
                     </li>
                     <li>
                         <div class="single-list-topics-content">
                             <div class="single-list-topics-icon">
-                                <i class="flaticon-building"></i>
+                                <i class="fa fa-users"></i>
                             </div>
-                            <h2><a href="#">hotels</a></h2>
+                            <h2><a href="#">human resources</a></h2>
                             <p>185 listings</p>
                         </div>
                     </li>
                     <li>
                         <div class="single-list-topics-content">
                             <div class="single-list-topics-icon">
-                                <i class="flaticon-pills"></i>
+                                <i class="fa fa-line-chart"></i>
                             </div>
-                            <h2><a href="#">healthcaree</a></h2>
+                            <h2><a href="#">career development</a></h2>
                             <p>200 listings</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="single-list-topics-content">
-                            <div class="single-list-topics-icon">
-                                <i class="flaticon-transport"></i>
-                            </div>
-                            <h2><a href="#">automotion</a></h2>
-                            <p>120 listings</p>
                         </div>
                     </li>
                 </ul>
@@ -256,7 +248,9 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="careerModalLabel">Career Development Coaching</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <p><strong> Career development coaching</strong> is a process that helps people achieve their career
@@ -305,7 +299,9 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="resumeModalLabel">Resume Writing</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <p>A professionally<strong> written resume</strong> is your ticket to securing the job of your dreams.
@@ -345,437 +341,6 @@
     </div>
     <!--/.works-->
     <!--works end -->
-
-    <!--explore start -->
-    <section id="explore" class="explore">
-        <div class="container">
-            <div class="section-header">
-                <h2>explore</h2>
-                <p>Explore New place, food, culture around the world and many more</p>
-            </div><!--/.section-header-->
-            <div class="explore-content">
-                <div class="row">
-                    <div class=" col-md-4 col-sm-6">
-                        <div class="single-explore-item">
-                            <div class="single-explore-img">
-                                <img src="assets/images/explore/e1.jpg" alt="explore image">
-                                <div class="single-explore-img-info">
-                                    <button onclick="window.location.href='#'">best rated</button>
-                                    <div class="single-explore-image-icon-box">
-                                        <ul>
-                                            <li>
-                                                <div class="single-explore-image-icon">
-                                                    <i class="fa fa-arrows-alt"></i>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="single-explore-image-icon">
-                                                    <i class="fa fa-bookmark-o"></i>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-explore-txt bg-theme-1">
-                                <h2><a href="#">tommy helfinger bar</a></h2>
-                                <p class="explore-rating-price">
-                                    <span class="explore-rating">5.0</span>
-                                    <a href="#"> 10 ratings</a>
-                                    <span class="explore-price-box">
-                                        form
-                                        <span class="explore-price">5$-300$</span>
-                                    </span>
-                                    <a href="#">resturent</a>
-                                </p>
-                                <div class="explore-person">
-                                    <div class="row">
-                                        <div class="col-sm-2">
-                                            <div class="explore-person-img">
-                                                <a href="#">
-                                                    <img src="assets/images/explore/person.png" alt="explore person">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-10">
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                eiusmod
-                                                tempor incid ut labore et dolore magna aliqua....
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="explore-open-close-part">
-                                    <div class="row">
-                                        <div class="col-sm-5">
-                                            <button class="close-btn" onclick="window.location.href='#'">close
-                                                now</button>
-                                        </div>
-                                        <div class="col-sm-7">
-                                            <div class="explore-map-icon">
-                                                <a href="#"><i data-feather="map-pin"></i></a>
-                                                <a href="#"><i data-feather="upload"></i></a>
-                                                <a href="#"><i data-feather="heart"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="single-explore-item">
-                            <div class="single-explore-img">
-                                <img src="assets/images/explore/e2.jpg" alt="explore image">
-                                <div class="single-explore-img-info">
-                                    <button onclick="window.location.href='#'">featured</button>
-                                    <div class="single-explore-image-icon-box">
-                                        <ul>
-                                            <li>
-                                                <div class="single-explore-image-icon">
-                                                    <i class="fa fa-arrows-alt"></i>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="single-explore-image-icon">
-                                                    <i class="fa fa-bookmark-o"></i>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-explore-txt bg-theme-2">
-                                <h2><a href="#">swim and dine resort</a></h2>
-                                <p class="explore-rating-price">
-                                    <span class="explore-rating">4.5</span>
-                                    <a href="#"> 8 ratings</a>
-                                    <span class="explore-price-box">
-                                        form
-                                        <span class="explore-price">50$-500$</span>
-                                    </span>
-                                    <a href="#">hotel</a>
-                                </p>
-                                <div class="explore-person">
-                                    <div class="row">
-                                        <div class="col-sm-2">
-                                            <div class="explore-person-img">
-                                                <a href="#">
-                                                    <img src="assets/images/explore/person.png" alt="explore person">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-10">
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                eiusmod
-                                                tempor incid ut labore et dolore magna aliqua....
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="explore-open-close-part">
-                                    <div class="row">
-                                        <div class="col-sm-5">
-                                            <button class="close-btn open-btn" onclick="window.location.href='#'">open
-                                                now</button>
-                                        </div>
-                                        <div class="col-sm-7">
-                                            <div class="explore-map-icon">
-                                                <a href="#"><i data-feather="map-pin"></i></a>
-                                                <a href="#"><i data-feather="upload"></i></a>
-                                                <a href="#"><i data-feather="heart"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="single-explore-item">
-                            <div class="single-explore-img">
-                                <img src="assets/images/explore/e3.jpg" alt="explore image">
-                                <div class="single-explore-img-info">
-                                    <button onclick="window.location.href='#'">best rated</button>
-                                    <div class="single-explore-image-icon-box">
-                                        <ul>
-                                            <li>
-                                                <div class="single-explore-image-icon">
-                                                    <i class="fa fa-arrows-alt"></i>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="single-explore-image-icon">
-                                                    <i class="fa fa-bookmark-o"></i>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-explore-txt bg-theme-3">
-                                <h2><a href="#">europe tour</a></h2>
-                                <p class="explore-rating-price">
-                                    <span class="explore-rating">5.0</span>
-                                    <a href="#"> 15 ratings</a>
-                                    <span class="explore-price-box">
-                                        form
-                                        <span class="explore-price">5k$-10k$</span>
-                                    </span>
-                                    <a href="#">destination</a>
-                                </p>
-                                <div class="explore-person">
-                                    <div class="row">
-                                        <div class="col-sm-2">
-                                            <div class="explore-person-img">
-                                                <a href="#">
-                                                    <img src="assets/images/explore/person.png" alt="explore person">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-10">
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                eiusmod
-                                                tempor incid ut labore et dolore magna aliqua....
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="explore-open-close-part">
-                                    <div class="row">
-                                        <div class="col-sm-5">
-                                            <button class="close-btn" onclick="window.location.href='#'">close
-                                                now</button>
-                                        </div>
-                                        <div class="col-sm-7">
-                                            <div class="explore-map-icon">
-                                                <a href="#"><i data-feather="map-pin"></i></a>
-                                                <a href="#"><i data-feather="upload"></i></a>
-                                                <a href="#"><i data-feather="heart"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class=" col-md-4 col-sm-6">
-                        <div class="single-explore-item">
-                            <div class="single-explore-img">
-                                <img src="assets/images/explore/e4.jpg" alt="explore image">
-                                <div class="single-explore-img-info">
-                                    <button onclick="window.location.href='#'">most view</button>
-                                    <div class="single-explore-image-icon-box">
-                                        <ul>
-                                            <li>
-                                                <div class="single-explore-image-icon">
-                                                    <i class="fa fa-arrows-alt"></i>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="single-explore-image-icon">
-                                                    <i class="fa fa-bookmark-o"></i>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-explore-txt bg-theme-4">
-                                <h2><a href="#">banglow with swiming pool</a></h2>
-                                <p class="explore-rating-price">
-                                    <span class="explore-rating">5.0</span>
-                                    <a href="#"> 10 ratings</a>
-                                    <span class="explore-price-box">
-                                        form
-                                        <span class="explore-price">10k$-15k$</span>
-                                    </span>
-                                    <a href="#">real estate</a>
-                                </p>
-                                <div class="explore-person">
-                                    <div class="row">
-                                        <div class="col-sm-2">
-                                            <div class="explore-person-img">
-                                                <a href="#">
-                                                    <img src="assets/images/explore/person.png" alt="explore person">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-10">
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                eiusmod
-                                                tempor incid ut labore et dolore magna aliqua....
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="explore-open-close-part">
-                                    <div class="row">
-                                        <div class="col-sm-5">
-                                            <button class="close-btn" onclick="window.location.href='#'">close
-                                                now</button>
-                                        </div>
-                                        <div class="col-sm-7">
-                                            <div class="explore-map-icon">
-                                                <a href="#"><i data-feather="map-pin"></i></a>
-                                                <a href="#"><i data-feather="upload"></i></a>
-                                                <a href="#"><i data-feather="heart"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="single-explore-item">
-                            <div class="single-explore-img">
-                                <img src="assets/images/explore/e5.jpg" alt="explore image">
-                                <div class="single-explore-img-info">
-                                    <button onclick="window.location.href='#'">featured</button>
-                                    <div class="single-explore-image-icon-box">
-                                        <ul>
-                                            <li>
-                                                <div class="single-explore-image-icon">
-                                                    <i class="fa fa-arrows-alt"></i>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="single-explore-image-icon">
-                                                    <i class="fa fa-bookmark-o"></i>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-explore-txt bg-theme-2">
-                                <h2><a href="#">vintage car expo</a></h2>
-                                <p class="explore-rating-price">
-                                    <span class="explore-rating">4.2</span>
-                                    <a href="#"> 8 ratings</a>
-                                    <span class="explore-price-box">
-                                        form
-                                        <span class="explore-price">500$-1200$</span>
-                                    </span>
-                                    <a href="#">automotion</a>
-                                </p>
-                                <div class="explore-person">
-                                    <div class="row">
-                                        <div class="col-sm-2">
-                                            <div class="explore-person-img">
-                                                <a href="#">
-                                                    <img src="assets/images/explore/person.png" alt="explore person">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-10">
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                eiusmod
-                                                tempor incid ut labore et dolore magna aliqua....
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="explore-open-close-part">
-                                    <div class="row">
-                                        <div class="col-sm-5">
-                                            <button class="close-btn open-btn" onclick="window.location.href='#'">open
-                                                now</button>
-                                        </div>
-                                        <div class="col-sm-7">
-                                            <div class="explore-map-icon">
-                                                <a href="#"><i data-feather="map-pin"></i></a>
-                                                <a href="#"><i data-feather="upload"></i></a>
-                                                <a href="#"><i data-feather="heart"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="single-explore-item">
-                            <div class="single-explore-img">
-                                <img src="assets/images/explore/e6.jpg" alt="explore image">
-                                <div class="single-explore-img-info">
-                                    <button onclick="window.location.href='#'">best rated</button>
-                                    <div class="single-explore-image-icon-box">
-                                        <ul>
-                                            <li>
-                                                <div class="single-explore-image-icon">
-                                                    <i class="fa fa-arrows-alt"></i>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="single-explore-image-icon">
-                                                    <i class="fa fa-bookmark-o"></i>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-explore-txt bg-theme-5">
-                                <h2><a href="#">thailand tour</a></h2>
-                                <p class="explore-rating-price">
-                                    <span class="explore-rating">5.0</span>
-                                    <a href="#"> 15 ratings</a>
-                                    <span class="explore-price-box">
-                                        form
-                                        <span class="explore-price">5k$-10k$</span>
-                                    </span>
-                                    <a href="#">destination</a>
-                                </p>
-                                <div class="explore-person">
-                                    <div class="row">
-                                        <div class="col-sm-2">
-                                            <div class="explore-person-img">
-                                                <a href="#">
-                                                    <img src="assets/images/explore/person.png" alt="explore person">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-10">
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                eiusmod
-                                                tempor incid ut labore et dolore magna aliqua....
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="explore-open-close-part">
-                                    <div class="row">
-                                        <div class="col-sm-5">
-                                            <button class="close-btn" onclick="window.location.href='#'">close
-                                                now</button>
-                                        </div>
-                                        <div class="col-sm-7">
-                                            <div class="explore-map-icon">
-                                                <a href="#"><i data-feather="map-pin"></i></a>
-                                                <a href="#"><i data-feather="upload"></i></a>
-                                                <a href="#"><i data-feather="heart"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><!--/.container-->
-
-    </section><!--/.explore-->
-    <!--explore end -->
-
     <!--reviews start -->
     <section id="reviews" class="reviews">
         <div class="section-header">
@@ -950,112 +515,150 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="subscription-input-group">
-                        <button class="appsLand-btn subscribe-btn" id="subscribeButton">
-                            Subscribe
-                        </button>
+                        <button class="appsLand-btn subscribe-btn" id="manageSubscriptionButton">Manage
+                            Subscription</button>
                     </div>
                 </div>
             </div>
-            <br><br>
-            <div class="subscribe-title text-center">
-                <h3> We're sorry to see you go! If you'd prefer not to receive updates from us, you can unsubscribe at any
-                    time by clicking the link above.</h3>
-            </div>
-            {{-- <div class="row">
-                <div class="col-sm-12">
-                    <div class="subscription-input-group">
-                        <form action="#">
-                             <button class="appsLand-btn subscribe-btn" onclick="window.location.href='#'">
-                                UnSubscribe
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div> --}}
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="subscription-input-group">
-                        <button class="appsLand-btn subscribe-btn" id="unsubscribeButton">
-                            UnSubscribe
-                        </button>
-                    </div>
-                </div>
-            </div>
+            <br>
         </div>
     </section>
-    <div id="unsubscribePopup" class="popup-form">
+
+    {{-- Main Subscription Popup --}}
+    <div id="manageSubscriptionPopup" class="popup-form">
         <div class="popup-content">
-            <span id="closePopup" class="close">&times;</span>
-            <h2>UnSubscribe to Dizams</h2><br>
-            <form id="unsubscribeForm" action="{{ route('unsubscribe.store') }}" method="POST">
+            <span id="closeMainPopup" class="close">&times;</span>
+            <h2>Manage Subscription</h2><br>
+            <form id="mainForm">
                 @csrf
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name" required />
 
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" required />
 
-                <label for="reason">Reson</label>
-                <input type="text" id="reason" name="reason" required>
+                <label for="phone">Phone Number:</label>
+                <input type="text" id="phone" name="phone" required />
 
-                <button type="submit">UnSubscribe</button>
+                <label for="linkedin">LinkedIn ID (Optional):</label>
+                <input type="text" id="linkedin" name="linkedin" />
+
+                <button type="button" id="subscribeButton">Subscribe</button><br>
+                <br>
+                <button type="button" id="unsubscribeButton">Unsubscribe</button>
             </form>
         </div>
     </div>
-    {{-- popup subscribe --}}
-    <div id="subscribePopup" class="popup-form">
+
+    {{-- Unsubscribe Reason Popup --}}
+    <div id="unsubscribeReasonPopup" class="popup-form" style="display: none;">
         <div class="popup-content">
-            <span id="closePopup" class="close">&times;</span>
-            <h2>Subscribe to Dizams</h2>
-            <form id="subscribeForm" action="{{ route('subscribe.store') }}" method="POST">
+            <span id="closeReasonPopup" class="close">&times;</span>
+            <h2>Unsubscribe</h2><br>
+            <form id="reasonForm">
                 @csrf
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="phone">Phone Number:</label>
-                <input type="text" id="phone" name="phone" required>
-
-                <label for="linkedin">LinkedIn ID:</label>
-                <input type="text" id="linkedin" name="linkedin" required>
-
-                <button type="submit">Subscribe</button>
+                <label for="reason" class="form-label">Reason for Unsubscribing:</label>
+                <textarea class="form-control" id="reason" name="reason" required></textarea>
+                <button type="button" id="submitUnsubscribe">Submit</button>
             </form>
         </div>
     </div>
     <script>
-        // unsubscribe
-        document.getElementById('unsubscribeButton').addEventListener('click', function() {
-            document.getElementById('unsubscribePopup').style.display = 'block'
-        });
-        document.getElementById('closePopup').addEventListener('click', function() {
-            document.getElementById('unsubscribePopup').style.display = 'none';
-        });
-
-        // Close the popup if the user clicks outside the form
-        window.addEventListener('click', function(event) {
-            if (event.target == document.getElementById('unsubscribePopup')) {
-                document.getElementById('unsubscribePopup').style.display = 'none';
-            }
-        });
-        // endunsubscribe
         // Show the popup when the "Subscribe" button is clicked
+        // Show the popup when the "Manage Subscription" button is clicked
+        document.getElementById('manageSubscriptionButton').addEventListener('click', function() {
+            document.getElementById('manageSubscriptionPopup').style.display = 'block';
+        });
+
+        // Close the main popup
+        document.getElementById('closeMainPopup').addEventListener('click', function() {
+            document.getElementById('manageSubscriptionPopup').style.display = 'none';
+        });
+
+        // Close the reason popup
+        document.getElementById('closeReasonPopup').addEventListener('click', function() {
+            document.getElementById('unsubscribeReasonPopup').style.display = 'none';
+        });
+
+        // Subscribe button logic
         document.getElementById('subscribeButton').addEventListener('click', function() {
-            document.getElementById('subscribePopup').style.display = 'block';
-        });
-
-        // Close the popup when the close button is clicked
-        document.getElementById('closePopup').addEventListener('click', function() {
-            document.getElementById('subscribePopup').style.display = 'none';
-        });
-
-        // Close the popup if the user clicks outside the form
-        window.addEventListener('click', function(event) {
-            if (event.target == document.getElementById('subscribePopup')) {
-                document.getElementById('subscribePopup').style.display = 'none';
+            const formElement = document.getElementById('mainForm');
+            if (!formElement) {
+                alert('Form not found!');
+                return;
             }
+            const formData = new FormData(formElement);
+            formData.append('reason', ''); // Add empty reason for subscription
+
+            fetch('{{ route('subscribe.store') }}', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
+                            'content'),
+                        'Accept': 'application/json',
+                    },
+                })
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    alert(data.message || 'Subscription successful!');
+                    formElement.reset(); // Reset the form fields
+                    document.getElementById('manageSubscriptionPopup').style.display = 'none'; // Close popup
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    alert('An error occurred. Please check the console for details.');
+                });
+        });
+
+        // Unsubscribe button logic
+        document.getElementById('unsubscribeButton').addEventListener('click', function() {
+            document.getElementById('manageSubscriptionPopup').style.display = 'none';
+            document.getElementById('unsubscribeReasonPopup').style.display = 'block';
+        });
+
+        // Submit unsubscribe logic
+        document.getElementById('submitUnsubscribe').addEventListener('click', function() {
+            const mainFormData = new FormData(document.getElementById('mainForm'));
+            const reason = document.getElementById('reason').value;
+
+            if (reason.trim() === '') {
+                alert('Please provide a reason for unsubscribing.');
+                return;
+            }
+
+            mainFormData.append('reason', reason);
+
+            fetch('{{ route('subscribe.store') }}', {
+                    method: 'POST',
+                    body: mainFormData,
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
+                            'content'),
+                        'Accept': 'application/json',
+                    },
+                })
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    alert(data.message || 'Unsubscribed successfully!');
+                    document.getElementById('reasonForm').reset();
+                    document.getElementById('mainForm').reset(); 
+                    document.getElementById('unsubscribeReasonPopup').style.display = 'none'; 
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    alert('An error occurred. Please check the console for details.');
+                });
         });
         // resume
         // Show the popup when the "Click Here" button is clicked

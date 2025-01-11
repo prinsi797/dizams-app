@@ -544,6 +544,18 @@ nav.navbar.bootsnav .navbar-toggle i {
     position: relative;
     top: -98px;
     z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.single-list-topics-icon i {
+    transition: transform 0.3s ease, color 0.3s ease; /* Smooth hover effect */
+    color: #ffda2b;
+    font-size: 30px !important;
+}
+.testimonial-person-star i {
+    font-size: 30px !important; 
 }
 
 .list-topics-content ul li {

@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Subscribe extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'email', 'phone', 'linkedin'];
+    protected $fillable = ['name', 'email', 'phone', 'linkedin','reason'];
 }

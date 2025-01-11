@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('education');
             $table->text('job_details');
             $table->string('resume'); 
-            $table->text('job_description');
+            $table->text('job_description')->nullable();
             $table->timestamps();
         });
     }

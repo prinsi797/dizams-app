@@ -28,8 +28,7 @@ use App\Http\Controllers\LocationController;
 Route::get('/', action: [HomeController::class, 'index']);
 Route::get('contact',[HomeController::class,'contact'])->name('contact');
 Route::post('/contact/send', [HomeController::class, 'send'])->name('contact.send');
-Route::post('/subscribe', [HomeController::class, 'subscribeStore'])->name('subscribe.store');
-Route::post('/unsubscribe', [HomeController::class, 'unsubscribeStore'])->name('unsubscribe.store');
+Route::post('/subscribe/store', [HomeController::class, 'subscribeStore'])->name('subscribe.store');
 Route::post('/submit-resume', [HomeController::class, 'resumeStore'])->name('resume.store');
 
 Route::get('/admin', function () {
