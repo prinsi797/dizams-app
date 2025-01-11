@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ContactNotification;
+use App\Mail\ResumeNotification;
 use App\Models\ClientReview;
 use App\Models\Contact;
 use App\Models\Resume;
@@ -10,6 +11,7 @@ use App\Models\Subscribe;
 use App\Models\UnSubscribe;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
@@ -58,35 +60,17 @@ class HomeController extends Controller
                 'linkedin' => 'nullable|string',
                 'reason' => 'nullable|string',
             ]);
-    
+
             Subscribe::create($validated);
-    
+
             return response()->json(['success' => true, 'message' => 'Action completed successfully!'], 200);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
         }
     }
-    public function unsubscribeStore(Request $request)
-    {
-
-        $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|email',
-            'reason' => 'required',
-        ]);
-
-        UnSubscribe::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'reason' => $request->reason,
-        ]);
-
-        return redirect()->back()->with('success', 'You have Unsubscribed successfully!');
-    }
 
     public function resumeStore(Request $request)
     {
-        // Validate the incoming request
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|email',
@@ -98,10 +82,10 @@ class HomeController extends Controller
             'job_description' => 'nullable|string',
         ]);
 
-        // Handle the file upload for the resume
+        // Store the uploaded resume file
         $resumePath = $request->file('resume')->store('resumes', 'public');
 
-        // Store the resume data in the database
+        // Store resume data in the database
         Resume::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -109,11 +93,27 @@ class HomeController extends Controller
             'linkedin' => $request->linkedin,
             'education' => $request->education,
             'job_details' => $request->job_details,
-            'resume' => $resumePath,
+            'resume' => $resumePath,  // Store the resume file path
             'job_description' => $request->job_description,
         ]);
 
-        // Redirect or return success response
+        // Prepare the resume data to send in the email
+        $resumeData = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'linkedin' => $request->linkedin,
+            'education' => $request->education,
+            'job_details' => $request->job_details,
+            'resume' => $resumePath,  // Include the resume file path in the email data
+            'job_description' => $request->job_description,
+        ];
+
+        // Send the email with the resume attachment
+        $ownerEmail = 'prinsi@kryzetech.com';
+        Mail::to($ownerEmail)->send(new ResumeNotification($resumeData));
+
+
         return redirect()->back()->with('success', 'Your resume has been submitted successfully!');
     }
 }
