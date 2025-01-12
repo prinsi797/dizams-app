@@ -35,6 +35,10 @@ class HomeController extends Controller {
     public function about(Request $request) {
         return view('frontend.abouts');
     }
+
+    public function jobsOpening(Request $request) {
+        return view('frontend.jobs');
+    }
     // conatct page
     public function send(Request $request) {
         // $request->validate([

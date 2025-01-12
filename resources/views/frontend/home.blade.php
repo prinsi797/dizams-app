@@ -1,23 +1,53 @@
 @extends('frontend.layouts.app')
 @section('title', 'Home')
+<style>
+    .text {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .position-relative {
+        position: relative;
+    }
+
+    .left-side-ad {
+        position: absolute;
+        left: -320px;
+        top: 50px;
+        width: 300px;
+        height: 600px;
+        background: transparent;
+        z-index: 10;
+    }
+
+    @media (max-width: 1200px) {
+        .left-side-ad {
+            display: none;
+        }
+    }
+</style>
 @section('content')
-    {{-- @push('scripts')
+    @push('scripts')
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8013371309995980"
             crossorigin="anonymous"></script>
-    @endpush --}}
+    @endpush
     <section id="home" class="welcome-hero">
-        <div class="container">
+        <div class="container position-relative">
+            <!-- Add this new div for the ad container -->
+            <div class="left-side-ad">
+                <ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px"
+                    data-ad-client="ca-pub-8013371309995980" data-ad-slot="3767729937">
+                </ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
             <div class="welcome-hero-txt">
                 <h2>best place to find Services in <br> Recruitment and Consulting</h2>
-                <!-- Google Ads Code Here -->
-                <div class="google-ads">
-                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8013371309995980"
-                        data-ad-slot="3767729937" data-ad-format="auto" data-full-width-responsive="true">
-                    </ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                </div>
                 <p>
                     Find Resume Writing, Recruitment, Consulting, Placements, Career Services, and more in just one
                     click re
@@ -39,7 +69,6 @@
                 </div>
             </div>
         </div>
-
     </section>
 
     {{-- resume popup --}}
@@ -96,7 +125,7 @@
                             <div class="single-list-topics-icon">
                                 <i class="fa fa-briefcase"></i>
                             </div>
-                            <h2><a href="#">job openings</a></h2>
+                            <h2><a href="{{ route('jobs.opening') }}">job openings</a></h2>
                             <p>214 listings</p>
                         </div>
                     </li>
@@ -141,7 +170,7 @@
                                     loading="lazy">
                             </div>
                             <h2><a href="#">Human Resources</a></h2>
-                            <p>
+                            <p class="text">
                                 Human resources management (HRM) is the practice of managing an organization's employees to
                                 achieve its goals...
                             </p>
@@ -158,7 +187,7 @@
                                     alt="image" loading="lazy">
                             </div>
                             <h2><a href="#">Career Development Coaching</a></h2>
-                            <p>
+                            <p class="text">
                                 Career development coaching is a process that helps people achieve their career goals by
                                 identifying areas...
                             </p>
@@ -175,7 +204,7 @@
                                     alt="image" loading="lazy">
                             </div>
                             <h2><a href="#">Resume Writing</a></h2>
-                            <p>
+                            <p class="text">
                                 A professionally written resume is your ticket to securing the job of your dreams...
                             </p>
                             <button class="welcome-hero-btn how-work-btn" data-toggle="modal" data-target="#resumeModal">

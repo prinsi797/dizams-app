@@ -1,3 +1,9 @@
+<style>
+    /* .modal-content {
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    } */
+</style>
 <footer id="footer" class="footer">
     <div class="container">
         <div class="footer-menu">
@@ -35,12 +41,44 @@
                         <a href="https://www.linkedin.com/company/105334589/"><i class="fa fa-linkedin"></i></a>
                         <a href="#"><i class="fa fa-google-plus"></i></a>
                         <a href="{{ route('login') }}"><i class="fa fa-user"></i></a>
+                        {{-- <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#loginModal">
+                            <i class="fa fa-user"></i>
+                        </a> --}}
                     </div>
                 </div>
             </div>
 
         </div><!--/.hm-footer-copyright-->
     </div><!--/.container-->
+
+    <!-- Login Modal -->
+    {{-- <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form action="{{ route('login') }}" method="POST">
+                    @csrf
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="loginModalLabel">User Login</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" name="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" name="password" id="password" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> --}}
 
     <div id="scroll-Top">
         <div class="return-to-top">

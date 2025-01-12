@@ -24,13 +24,14 @@ use App\Http\Controllers\RatingController;
 
 
 
-Route::get('/', action: [HomeController::class, 'index']);
+Route::get('/', action: [HomeController::class, 'index'])->name('home');
 Route::get('contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/resume', [HomeController::class, 'resume'])->name('resume');
 Route::get('/abouts', [HomeController::class, 'about'])->name('about');
 Route::post('/contact/send', [HomeController::class, 'send'])->name('contact.send');
 Route::post('/subscribe/store', [HomeController::class, 'subscribeStore'])->name('subscribe.store');
 Route::post('/submit-resume', [HomeController::class, 'resumeStore'])->name('resume.store');
+Route::get('/job-openings', [HomeController::class, 'jobsOpening'])->name('jobs.opening');
 
 
 Route::get('/admin', function () {
