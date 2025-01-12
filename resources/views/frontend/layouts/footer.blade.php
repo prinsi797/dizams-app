@@ -34,6 +34,7 @@
                         <a href="#"><i class="fa fa-twitter"></i></a>
                         <a href="https://www.linkedin.com/company/105334589/"><i class="fa fa-linkedin"></i></a>
                         <a href="#"><i class="fa fa-google-plus"></i></a>
+                        <a href="{{ route('login') }}"><i class="fa fa-user"></i></a>
                     </div>
                 </div>
             </div>

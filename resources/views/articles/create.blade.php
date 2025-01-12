@@ -26,7 +26,7 @@
             </div>
             {{--  --}}
             <div class="col-md-12 form_page">
-                <form action="{{ route('reviews.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('articles.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card">
                         <div class="card-body">
@@ -48,17 +48,25 @@
 
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="location" class="form-label">Location</label>
-                                                <input type="text" name="location" class="form-control" id="location"
+                                                <label for="details" class="form-label">Details</label>
+                                                <input type="text" name="details" class="form-control" id="details"
                                                     required>
                                             </div>
                                         </div>
 
-                                        <div class="col-md-6 mt-3">
+                                        <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="rating" class="form-label">Rating</label>
-                                                <input type="number" name="rating" min="1" max="5"
-                                                    class="form-control" id="rating" required>
+                                                <label for="author" class="form-label">Author</label>
+                                                <input type="text" name="author" class="form-control" id="author"
+                                                    required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="posted_date" class="form-label">posted_date</label>
+                                                <input type="date" name="posted_date" class="form-control"
+                                                    id="posted_date" required>
                                             </div>
                                         </div>
 
@@ -66,13 +74,6 @@
                                             <div class="form-group">
                                                 <label for="image" class="form-label">Upload Image:</label>
                                                 <input type="file" class="form-control" name="image" id="image">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-12 mt-3">
-                                            <div class="form-group">
-                                                <label for="description" class="form-label">Description</label>
-                                                <textarea type="text" name="description" rows="4" class="form-control" id="description" required></textarea>
                                             </div>
                                         </div>
                                     </div>

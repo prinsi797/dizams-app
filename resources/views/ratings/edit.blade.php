@@ -24,15 +24,15 @@
                     </div>
                 @endif
             </div>
-            {{--  --}}
             <div class="col-md-12 form_page">
-                <form action="{{ route('reviews.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('ratings.update', $ratings->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="card">
                         <div class="card-body">
                             <div class="row form_sec">
                                 <div class="col-12">
-                                    <h5>Basic Details</h5>
+                                    <h5>Rating Details</h5>
                                 </div>
                             </div>
                             <div class="row">
@@ -40,53 +40,47 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="name" class="form-label">Name</label>
-                                                <input type="text" name="name" class="form-control" id="name"
-                                                    required>
+                                                <label for="listings" class="form-label">Listings</label>
+                                                <input type="text" name="listings" class="form-control" id="listings"
+                                                    value="{{ $ratings->listings }}" required>
                                             </div>
                                         </div>
 
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="location" class="form-label">Location</label>
-                                                <input type="text" name="location" class="form-control" id="location"
-                                                    required>
+                                                <label for="categories" class="form-label">Categories</label>
+                                                <input type="text" name="categories" class="form-control" id="categories"
+                                                    value="{{ $ratings->categories }}" required>
                                             </div>
                                         </div>
 
-                                        <div class="col-md-6 mt-3">
+                                        <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="rating" class="form-label">Rating</label>
-                                                <input type="number" name="rating" min="1" max="5"
-                                                    class="form-control" id="rating" required>
+                                                <label for="visitors" class="form-label">Visitors</label>
+                                                <input type="text" name="visitors" class="form-control" id="visitors"
+                                                    value="{{ $ratings->visitors }}" required>
                                             </div>
                                         </div>
 
-                                        <div class="col-md-6 mt-3">
+                                        <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="image" class="form-label">Upload Image:</label>
-                                                <input type="file" class="form-control" name="image" id="image">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-12 mt-3">
-                                            <div class="form-group">
-                                                <label for="description" class="form-label">Description</label>
-                                                <textarea type="text" name="description" rows="4" class="form-control" id="description" required></textarea>
+                                                <label for="happy_client" class="form-label">Happy Client</label>
+                                                <input type="text" name="happy_client" class="form-control"
+                                                    id="happy_client" value="{{ $ratings->happy_client }}" required>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12 ms-4">
-                                <button type="submit" class="btn btn-primary add_site">
-                                    Save
-                                </button>
-                                <a href="{{ route('reviews.index') }}" class="btn btn-secondary">Back</a>
-                            </div>
-                        </div><br>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-primary add_site">
+                                Update
+                            </button>
+                            {{-- <a href="{{ route('ratings.index') }}" class="btn btn-secondary">Back</a> --}}
+                        </div>
                     </div><br>
                 </form>
             </div>

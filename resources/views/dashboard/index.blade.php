@@ -19,15 +19,15 @@
                                 style="width: 70px; height: 30px;"></a>
                     </li>
 
-                    {{-- @if (Auth::user() && Auth::user()->role === 'admin') --}}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('users.index') }}">Users</a>
-                    </li>
+                    @if (Auth::user() && Auth::user()->role === 'admin')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('users.index') }}">Users</a>
+                        </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('reviews.index') }}">Reviews</a>
-                    </li>
-                    {{-- @endif --}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('reviews.index') }}">Reviews</a>
+                        </li>
+                    @endif
 
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}"

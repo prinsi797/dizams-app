@@ -1,14 +1,13 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientReviewController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LocationController;
+use App\Http\Controllers\RatingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,10 +25,13 @@ use App\Http\Controllers\LocationController;
 
 
 Route::get('/', action: [HomeController::class, 'index']);
-Route::get('contact',[HomeController::class,'contact'])->name('contact');
+Route::get('contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/resume', [HomeController::class, 'resume'])->name('resume');
+Route::get('/abouts', [HomeController::class, 'about'])->name('about');
 Route::post('/contact/send', [HomeController::class, 'send'])->name('contact.send');
 Route::post('/subscribe/store', [HomeController::class, 'subscribeStore'])->name('subscribe.store');
 Route::post('/submit-resume', [HomeController::class, 'resumeStore'])->name('resume.store');
+
 
 Route::get('/admin', function () {
     return view(view: 'welcome');
@@ -50,4 +52,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('users', UserController::class);
 
     Route::resource('reviews', ClientReviewController::class);
+    // Route::resource('ratings', RatingController::class);
+    Route::get('/ratings/{rating}/edit', [RatingController::class, 'edit'])->name('ratings.edit'); // Edit route
+    Route::put('/ratings/{rating}', [RatingController::class, 'update'])->name('ratings.update');
+
+    Route::resource('articles', ArticleController::class);
 });

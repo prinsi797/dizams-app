@@ -24,10 +24,10 @@
                     </div>
                 @endif
             </div>
-            {{--  --}}
             <div class="col-md-12 form_page">
-                <form action="{{ route('reviews.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('articles.update', $article) }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="card">
                         <div class="card-body">
                             <div class="row form_sec">
@@ -42,51 +42,62 @@
                                             <div class="form-group">
                                                 <label for="name" class="form-label">Name</label>
                                                 <input type="text" name="name" class="form-control" id="name"
-                                                    required>
+                                                    value="{{ $article->name }}" required>
                                             </div>
                                         </div>
 
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="location" class="form-label">Location</label>
-                                                <input type="text" name="location" class="form-control" id="location"
-                                                    required>
+                                                <label for="author" class="form-label">Author</label>
+                                                <input type="text" name="author" class="form-control" id="author"
+                                                    value="{{ $article->author }}" required>
                                             </div>
                                         </div>
 
-                                        <div class="col-md-6 mt-3">
+                                        <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="rating" class="form-label">Rating</label>
-                                                <input type="number" name="rating" min="1" max="5"
-                                                    class="form-control" id="rating" required>
+                                                <label for="details" class="form-label">Details</label>
+                                                <input type="text" name="details" class="form-control" id="details"
+                                                    value="{{ $article->details }}" required>
                                             </div>
                                         </div>
 
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="posted_date" class="form-label">Posted Date</label>
+                                                <input type="date" name="posted_date" class="form-control"
+                                                    id="posted_date" value="{{ $article->posted_date }}" required>
+                                            </div>
+                                        </div>
+
+
                                         <div class="col-md-6 mt-3">
                                             <div class="form-group">
-                                                <label for="image" class="form-label">Upload Image:</label>
+                                                <label for="image" class="form-label">Upload New Image:</label>
                                                 <input type="file" class="form-control" name="image" id="image">
                                             </div>
-                                        </div>
-
-                                        <div class="col-md-12 mt-3">
-                                            <div class="form-group">
-                                                <label for="description" class="form-label">Description</label>
-                                                <textarea type="text" name="description" rows="4" class="form-control" id="description" required></textarea>
+                                            <div class="mt-3">
+                                                @if ($article->image)
+                                                    <div>
+                                                        <img src="{{ asset('storage/' . $article->image) }}"
+                                                            alt="Article Image" width="100">
+                                                    </div>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12 ms-4">
-                                <button type="submit" class="btn btn-primary add_site">
-                                    Save
-                                </button>
-                                <a href="{{ route('reviews.index') }}" class="btn btn-secondary">Back</a>
-                            </div>
-                        </div><br>
+                    </div><br>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-primary add_site">
+                                Update
+                            </button>
+                            <a href="{{ route('articles.index') }}" class="btn btn-secondary">Back</a>
+                        </div>
                     </div><br>
                 </form>
             </div>

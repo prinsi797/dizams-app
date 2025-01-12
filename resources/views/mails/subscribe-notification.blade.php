@@ -46,23 +46,25 @@
                 <th>Email</th>
                 <th>Phone</th>
                 <th>LinkedIn Profile</th>
-                <th>Education</th>
-                <th>Job Details</th>
-                <th>Job Description</th>
+                <th>Reason</th>
             </tr>
             <tr>
-                <td>{{ $resumeData['name'] }}</td>
-                <td>{{ $resumeData['email'] }}</td>
-                <td>{{ $resumeData['phone'] }}</td>
-                <td><a href="{{ $resumeData['linkedin'] }}" class="text-decoration-none"
-                        target="_blank">{{ $resumeData['linkedin'] }}</a></td>
-                <td>{{ $resumeData['education'] }}</td>
-                <td>{{ $resumeData['job_details'] }}</td>
+                <td>{{ $subscribeData['name'] }}</td>
+                <td>{{ $subscribeData['email'] }}</td>
+                <td>{{ $subscribeData['phone'] }}</td>
                 <td>
-                    @if ($resumeData['job_description'])
-                        {{ $resumeData['job_description'] }}
-                    @elseif(!$resumeData['job_description'])
-                        {{ 'No any Description' }}
+                    @if ($subscribeData['linkedin'])
+                        <a href="{{ $subscribeData['linkedin'] }}" class="text-decoration-none"
+                            target="_blank">{{ $subscribeData['linkedin'] }}</a>
+                    @elseif(!$subscribeData['linkedin'])
+                        {{ 'No any Linkedin Profile' }}
+                    @endif
+                </td>
+                <td>
+                    @if ($subscribeData['reason'])
+                        {{ $subscribeData['reason'] }}
+                    @elseif(!$subscribeData['reason'])
+                        {{ 'No any Linkedin Profile' }}
                     @endif
                 </td>
             </tr>

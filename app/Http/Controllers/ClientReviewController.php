@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\ClientReview;
+use App\Models\Rating;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 class ClientReviewController extends Controller {
     public function index() {
         $reviews = ClientReview::all();
-        return view('reviews.index', compact(var_name: 'reviews'));
+        $rating = Rating::find(1); // Fetch rating or define logic to retrieve it
+        return view('reviews.index', compact('reviews', 'rating'));
     }
 
     public function create() {
@@ -25,21 +27,13 @@ class ClientReviewController extends Controller {
             'rating' => 'required|integer|min:1|max:5',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-
-        // Post::create($request->all());
         $data = $request->all();
-
         // Handle image upload
         if ($request->hasFile('image')) {
             $data['image'] = $request->file('image')->store('posts', 'public'); // Store image in storage/app/public/posts
         }
-
         ClientReview::create($data);
         return redirect()->route(route: 'reviews.index')->with('success', 'Review created successfully.');
-    }
-
-    public function show(ClientReview $review) {
-        return view('reviews.show', compact(var_name: 'review'));
     }
 
     public function edit(ClientReview $review) {
@@ -54,6 +48,10 @@ class ClientReviewController extends Controller {
             'description' => 'required|string',
             'rating' => 'required|integer|min:1|max:5',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            // 'listings' => 'required|string',
+            // 'categories' => 'required|string',
+            // 'visitors' => 'required|string',
+            // 'happy_client' => 'required|string',
         ]);
 
         $data = $request->all();

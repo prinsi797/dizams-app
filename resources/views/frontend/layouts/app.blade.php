@@ -50,19 +50,19 @@
 
     <!--responsive.css-->
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
-    {{-- @stack('scripts') --}}
 </head>
 
 <body>
     <!-- top-area Start -->
     @include('frontend.layouts.header')
-   
+
     <!--welcome-hero start -->
     <main>
         @yield('content')
 
     </main>
     @include('frontend.layouts.footer')
+    @stack('scripts')
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
@@ -85,6 +85,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <!--Custom JS-->
     <script src="assets/js/custom.js"></script>
+
 </body>
 
 </html>

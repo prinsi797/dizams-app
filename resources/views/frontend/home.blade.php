@@ -1,10 +1,10 @@
 @extends('frontend.layouts.app')
 @section('title', 'Home')
-{{-- @push('scripts') --}}
-{{-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8013371309995980"
-    crossorigin="anonymous"></script> --}}
-{{-- @endpush --}}
 @section('content')
+    {{-- @push('scripts')
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8013371309995980"
+            crossorigin="anonymous"></script>
+    @endpush --}}
     <section id="home" class="welcome-hero">
         <div class="container">
             <div class="welcome-hero-txt">
@@ -12,7 +12,8 @@
                 <!-- Google Ads Code Here -->
                 <div class="google-ads">
                     <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8013371309995980"
-                        data-ad-slot="YOUR_AD_SLOT_ID" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                        data-ad-slot="3767729937" data-ad-format="auto" data-full-width-responsive="true">
+                    </ins>
                     <script>
                         (adsbygoogle = window.adsbygoogle || []).push({});
                     </script>
@@ -85,9 +86,8 @@
                         <div class="single-list-topics-content">
                             <div class="single-list-topics-icon">
                                 <i class="fa fa-book icon"></i>
-                                {{-- <i class="flaticon-restaurant"></i> --}}
                             </div>
-                            <h2><a href="#">resume writing</a></h2>
+                            <h2><a href="{{ route('resume') }}">resume writing</a></h2>
                             <p>150 listings</p>
                         </div>
                     </li>
@@ -114,15 +114,14 @@
                             <div class="single-list-topics-icon">
                                 <i class="fa fa-line-chart"></i>
                             </div>
-                            <h2><a href="#">career development</a></h2>
+                            <h2><a href="https://linkedin.com/in/divyanshu007bansal/">career development</a></h2>
                             <p>200 listings</p>
                         </div>
                     </li>
                 </ul>
             </div>
         </div><!--/.container-->
-
-    </section><!--/.list-topics-->
+    </section>
     <!--list-topics end-->
 
     <!--works start -->
@@ -382,11 +381,8 @@
                 </div>
             </div>
         </div>
-        
     </section>
-
     <!--reviews end -->
-
     <!-- statistics strat -->
     <section id="statistics" class="statistics">
         <div class="container">
@@ -394,39 +390,47 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="single-ststistics-box">
                         <div class="statistics-content">
-                            <div class="counter">90 </div> <span>K+</span>
-                        </div><!--/.statistics-content-->
+                            @foreach ($ratings as $rating)
+                                <div class="counter">{{ $rating->listings }}</div> <span>K+</span>
+                            @endforeach
+                        </div>
                         <h3>listings</h3>
-                    </div><!--/.single-ststistics-box-->
-                </div><!--/.col-->
+                    </div>
+                </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="single-ststistics-box">
                         <div class="statistics-content">
-                            <div class="counter">40</div> <span>k+</span>
-                        </div><!--/.statistics-content-->
+                            @foreach ($ratings as $rating)
+                                <div class="counter">{{ $rating->categories }}</div> <span>K+</span>
+                            @endforeach
+                        </div>
                         <h3>listing categories</h3>
-                    </div><!--/.single-ststistics-box-->
-                </div><!--/.col-->
+                    </div>
+                </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="single-ststistics-box">
                         <div class="statistics-content">
-                            <div class="counter">65</div> <span>k+</span>
-                        </div><!--/.statistics-content-->
+                            @foreach ($ratings as $rating)
+                                <div class="counter">{{ $rating->visitors }}</div> <span>K+</span>
+                            @endforeach
+                        </div>
                         <h3>visitors</h3>
-                    </div><!--/.single-ststistics-box-->
-                </div><!--/.col-->
+                    </div>
+                </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="single-ststistics-box">
                         <div class="statistics-content">
-                            <div class="counter">50</div> <span>k+</span>
-                        </div><!--/.statistics-content-->
+                            @foreach ($ratings as $rating)
+                                <div class="counter">{{ $rating->happy_client }}</div> <span>K+</span>
+                            @endforeach
+                        </div>
                         <h3>happy clients</h3>
-                    </div><!--/.single-ststistics-box-->
-                </div><!--/.col-->
-            </div><!--/.statistics-counter-->
-        </div><!--/.container-->
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    </section><!--/.counter-->
+    </section>
     <!-- statistics end -->
 
     <!--blog start -->
@@ -435,59 +439,29 @@
             <div class="section-header">
                 <h2>news and articles</h2>
                 <p>Always upto date with our latest News and Articles </p>
-            </div><!--/.section-header-->
-            <div class="blog-content">
-                <div class="row">
-                    <div class="col-md-4 col-sm-6">
-                        <div class="single-blog-item">
-                            <div class="single-blog-item-img">
-                                <img src="assets/images/blog/b1.jpg" alt="blog image">
-                            </div>
-                            <div class="single-blog-item-txt">
-                                <h2><a href="#">How to find your Desired Place more quickly</a></h2>
-                                <h4>posted <span>by</span> <a href="#">admin</a> march 2018</h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur de adipisicing elit, sed do eiusmod
-                                    tempore
-                                    incididunt ut labore et dolore magna.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="single-blog-item">
-                            <div class="single-blog-item-img">
-                                <img src="assets/images/blog/b2.jpg" alt="blog image">
-                            </div>
-                            <div class="single-blog-item-txt">
-                                <h2><a href="#">How to find your Desired Place more quickly</a></h2>
-                                <h4>posted <span>by</span> <a href="#">admin</a> march 2018</h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur de adipisicing elit, sed do eiusmod
-                                    tempore
-                                    incididunt ut labore et dolore magna.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="single-blog-item">
-                            <div class="single-blog-item-img">
-                                <img src="assets/images/blog/b3.jpg" alt="blog image">
-                            </div>
-                            <div class="single-blog-item-txt">
-                                <h2><a href="#">How to find your Desired Place more quickly</a></h2>
-                                <h4>posted <span>by</span> <a href="#">admin</a> march 2018</h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur de adipisicing elit, sed do eiusmod
-                                    tempore
-                                    incididunt ut labore et dolore magna.
-                                </p>
+            </div>
+            @foreach ($articles as $article)
+                <div class="blog-content">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6">
+                            <div class="single-blog-item">
+                                <div class="single-blog-item-img">
+                                    <img src="{{ $article->image ? asset('storage/' . $article->image) : asset('assets/images/avatar.png') }}"
+                                        alt="{{ $article->name ?? 'Default Avatar' }}">
+                                </div>
+                                <div class="single-blog-item-txt">
+                                    <h2><a href="#">{{ $article->name }}</a></h2>
+                                    <h4>posted <span>by:</span> <a href="#">{{ $article->author }}</a>
+                                        {{ \Carbon\Carbon::parse($article->posted_date)->format('F Y') }}</h4>
+                                    <p>
+                                        {{ $article->details }}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </section>
 
@@ -504,7 +478,6 @@
                     your professional goals effortlessly.
                 </p>
                 <br>
-                <h3> If you're a new member, you're welcome to subscribe. Thank you for being a part of our community! </h3>
             </div>
             <div class="row">
                 <div class="col-sm-12">
@@ -558,7 +531,7 @@
         </div>
     </div>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
             const wrapper = document.querySelector(".testimonial-wrapper");
             const testimonials = wrapper.innerHTML;
             wrapper.innerHTML += testimonials;
@@ -569,7 +542,7 @@
             });
         });
     </script>
-    
+
     <script>
         document.getElementById('manageSubscriptionButton').addEventListener('click', function() {
             document.getElementById('manageSubscriptionPopup').style.display = 'block';
@@ -655,8 +628,8 @@
                 .then((data) => {
                     alert(data.message || 'Unsubscribed successfully!');
                     document.getElementById('reasonForm').reset();
-                    document.getElementById('mainForm').reset(); 
-                    document.getElementById('unsubscribeReasonPopup').style.display = 'none'; 
+                    document.getElementById('mainForm').reset();
+                    document.getElementById('unsubscribeReasonPopup').style.display = 'none';
                 })
                 .catch((error) => {
                     console.error('Error:', error);

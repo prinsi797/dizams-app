@@ -13,7 +13,7 @@ return new class extends Migration {
     public function up() {
         Schema::create('client_reviews', function (Blueprint $table) {
             $table->id();
-            $table->string('image'); // Client's image path
+            $table->string('image');
             $table->string('name');
             $table->string('location');
             $table->text('description');

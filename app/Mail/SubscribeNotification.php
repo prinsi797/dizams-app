@@ -9,16 +9,17 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ContactNotification extends Mailable {
+class SubscribeNotification extends Mailable {
     use Queueable, SerializesModels;
-    public $contactData;
+    public $subscribeData;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($contactData) {
-        $this->contactData = $contactData;
+    public function __construct($subscribeData) {
+        $this->subscribeData = $subscribeData;
     }
 
     /**
@@ -28,7 +29,7 @@ class ContactNotification extends Mailable {
      */
     public function envelope() {
         return new Envelope(
-            subject: 'Contact Notification',
+            subject: 'Subscribe Notification',
         );
     }
 
@@ -39,7 +40,7 @@ class ContactNotification extends Mailable {
      */
     public function content() {
         return new Content(
-            view: 'mails.contact-notification',
+            view: 'mails.subscribe-notification',
         );
     }
 

@@ -4,9 +4,15 @@
     <div class="container">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h3>Reviews</h3>
+            @if ($rating)
+                <a href="{{ route('ratings.edit', $rating->id) }}" class="btn btn-primary"> <b>Ratings</b></a>
+            @else
+                <button class="btn btn-primary" disabled>Ratings</button>
+            @endif
+
             <a href="{{ route('reviews.create') }}" class="btn btn-primary"> <b>+</b></a>
         </div>
-    
+
         @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
@@ -18,7 +24,6 @@
                     <th>ID</th>
                     <th>Name</th>
                     <th>location</th>
-                    {{-- <th>description</th> --}}
                     <th>rating</th>
                     <th>Image</th>
                     <th>Actions</th>
