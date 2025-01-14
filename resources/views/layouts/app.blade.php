@@ -36,6 +36,10 @@
                             <a class="nav-link" href="{{ route('articles.index') }}"
                                 style="color: #1b1e20;">Articles</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('orderprices.index') }}" style="color: #1b1e20;">Price
+                                Edit</a>
+                        </li>
                     @endif
 
                     <li class="nav-item">

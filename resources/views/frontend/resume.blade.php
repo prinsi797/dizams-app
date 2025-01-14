@@ -277,8 +277,8 @@
                             <p>
                                 $10/Resume
                             </p>
-                            <button class="welcome-hero-btn how-work-btn" onclick="window.location.href='#'">
-                                read more
+                            <button class="welcome-hero-btn how-work-btn" onclick="openRangeModal('single')">
+                                Order Now
                             </button>
                         </div>
                     </div>
@@ -294,8 +294,8 @@
                             <p>
                                 $8.3/Resume
                             </p>
-                            <button class="welcome-hero-btn how-work-btn" onclick="window.location.href='#'">
-                                read more
+                            <button class="welcome-hero-btn how-work-btn" onclick="openRangeModal('bulk12')">
+                                Order Now
                             </button>
                         </div>
                     </div>
@@ -311,8 +311,8 @@
                             <p>
                                 $7.1/Resume
                             </p>
-                            <button class="welcome-hero-btn how-work-btn" onclick="window.location.href='#'">
-                                read more
+                            <button class="welcome-hero-btn how-work-btn" onclick="openRangeModal('bulk35')">
+                                Order Now
                             </button>
                         </div>
                     </div>
@@ -320,10 +320,177 @@
             </div>
         </div><!--/.container-->
 
-    </section><!--/.works-->
-    <!--works end -->
-    <!-- statistics end -->
+
+        <div class="modal fade" id="rangeModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">Select Number of Resumes</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="resumeRange">Number of Resumes:</label>
+                            <input type="range" class="form-control" id="resumeRange" min="1" max="12"
+                                value="1">
+                            <span id="rangeValue">1</span>
+                        </div>
+                        <div class="pricing-details">
+                            <p>Cost per Resume: $<span id="costPerResume">10</span></p>
+                            <h4>Total Amount: $<span id="totalAmount">10</span></h4>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="openOrderForm()">Order Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="orderModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">Complete Your Order</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="orderForm">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="tel" class="form-control" id="phone" name="phone" required>
+                            </div>
+                            <input type="hidden" id="finalAmount" name="amount">
+                            <button type="submit" class="btn btn-primary">Submit Order</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const rangeInput = document.getElementById('resumeRange');
+            const rangeValue = document.getElementById('rangeValue');
+            const totalAmount = document.getElementById('totalAmount');
+
+            // Set up jQuery AJAX default settings
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            rangeInput.addEventListener('input', function() {
+                const value = this.value;
+                rangeValue.textContent = value;
+                const total = value * 10;
+                totalAmount.textContent = total;
+            });
+
+            document.getElementById('orderForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                let formData = new FormData(this);
+                formData.append('amount', document.getElementById('totalAmount').textContent);
+                let formObject = {};
+                formData.forEach((value, key) => formObject[key] = value);
+
+                $.ajax({
+                    url: '/api/submit-order',
+                    method: 'POST',
+                    data: formObject,
+                    beforeSend: function() {
+                        const submitButton = document.querySelector(
+                            '#orderForm button[type="submit"]');
+                        submitButton.disabled = true;
+                        submitButton.textContent = 'Submitting...';
+                    },
+                    success: function(response) {
+                        console.log('Success:', response);
+                        alert('Order submitted successfully!');
+                        $('#orderModal').modal('hide');
+                        document.getElementById('orderForm').reset();
+                    },
+                    error: function(xhr, status, error) {
+                        console.log('Status:', status);
+                        console.log('Error:', error);
+                        console.log('Response:', xhr.responseJSON);
+
+                        let errorMessage = 'Error submitting order. ';
+                        if (xhr.responseJSON && xhr.responseJSON.errors) {
+                            errorMessage += Object.values(xhr.responseJSON.errors).join('\n');
+                        }
+                        alert(errorMessage);
+                    },
+                    complete: function() {
+                        const submitButton = document.querySelector(
+                            '#orderForm button[type="submit"]');
+                        submitButton.disabled = false;
+                        submitButton.textContent = 'Submit Order';
+                    }
+                });
+            });
+        });
+
+        function openRangeModal(planType) {
+            $('#rangeModal').modal('show');
+            const rangeInput = document.getElementById('resumeRange');
+            const costPerResume = document.getElementById('costPerResume');
+            const totalAmount = document.getElementById('totalAmount');
+            const rangeValue = document.getElementById('rangeValue');
+
+            let min = 1,
+                max = 12,
+                cost = 10;
+
+            if (planType === 'single') {
+                min = 1;
+                max = 12;
+                cost = 10;
+            } else if (planType === 'bulk12') {
+                min = 12;
+                max = 34;
+                cost = 8.3;
+            } else if (planType === 'bulk35') {
+                min = 35;
+                max = 100;
+                cost = 7.1;
+            }
+            rangeInput.min = min;
+            rangeInput.max = max;
+            rangeInput.value = min;
+            rangeValue.textContent = min;
+            costPerResume.textContent = cost.toFixed(2);
+            totalAmount.textContent = (min * cost).toFixed(2);
+
+            rangeInput.oninput = function() {
+                const value = this.value;
+                rangeValue.textContent = value;
+                totalAmount.textContent = (value * cost).toFixed(2);
+            };
+        }
+
+        function openOrderForm() {
+            $('#rangeModal').modal('hide');
+            $('#orderModal').modal('show');
+            const amount = document.getElementById('totalAmount').textContent;
+            document.getElementById('finalAmount').value = amount;
+        }
         // resume
         // Show the popup when the "Click Here" button is clicked
         document.getElementById('openResumePopup').addEventListener('click', function() {

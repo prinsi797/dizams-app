@@ -162,6 +162,21 @@
             </div>
             <div class="works-content">
                 <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                        <div class="single-how-works">
+                            <div class="single-how-works-icon">
+                                <img class="img-1" src="{{ asset('assets/images/works/Resume Writing.png') }}"
+                                    alt="image" loading="lazy">
+                            </div>
+                            <h2><a href="#">Resume Writing</a></h2>
+                            <p class="text">
+                                A professionally written resume is your ticket to securing the job of your dreams...
+                            </p>
+                            <button class="welcome-hero-btn how-work-btn" data-toggle="modal" data-target="#resumeModal">
+                                Read More
+                            </button>
+                        </div>
+                    </div>
                     <!-- Human Resources -->
                     <div class="col-md-4 col-sm-6">
                         <div class="single-how-works">
@@ -197,21 +212,7 @@
                         </div>
                     </div>
                     <!-- Resume Writing -->
-                    <div class="col-md-4 col-sm-6">
-                        <div class="single-how-works">
-                            <div class="single-how-works-icon">
-                                <img class="img-1" src="{{ asset('assets/images/works/Resume Writing.png') }}"
-                                    alt="image" loading="lazy">
-                            </div>
-                            <h2><a href="#">Resume Writing</a></h2>
-                            <p class="text">
-                                A professionally written resume is your ticket to securing the job of your dreams...
-                            </p>
-                            <button class="welcome-hero-btn how-work-btn" data-toggle="modal" data-target="#resumeModal">
-                                Read More
-                            </button>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>

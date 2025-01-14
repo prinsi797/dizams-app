@@ -27,8 +27,9 @@
                             </div>
                         </div>
                         <div class="col-sm-3 text-right">
-                            <button class="btn btn-primary"><a href="mailto:Dave@Dizams.Com" style="color: white;">Apply
-                                    Now</a></button>
+                            <button class="btn btn-primary" onclick="openForm()">Apply Now</button>
+                            {{-- <button class="btn btn-primary"><a href="mailto:Dave@Dizams.Com" style="color: white;">Apply
+                                    Now</a></button> --}}
                         </div>
                     </div>
 
@@ -79,8 +80,9 @@
                             </div>
                         </div>
                         <div class="col-sm-3 text-right">
-                            <button class="btn btn-primary"><a href="mailto:Dave@Dizams.Com" style="color: white;">Apply
-                                    Now</a></button>
+                            <button class="btn btn-primary" onclick="openForm()">Apply Now</button>
+                            {{-- <button class="btn btn-primary"><a href="mailto:Dave@Dizams.Com" style="color: white;">Apply
+                                    Now</a></button> --}}
                         </div>
                     </div>
 
@@ -121,8 +123,9 @@
                             </div>
                         </div>
                         <div class="col-sm-3 text-right">
-                            <button class="btn btn-primary"><a href="mailto:Dave@Dizams.Com" style="color: white;">Apply
-                                    Now</a></button>
+                            <button class="btn btn-primary" onclick="openForm()">Apply Now</button>
+                            {{-- <button class="btn btn-primary"><a href="mailto:Dave@Dizams.Com" style="color: white;">Apply
+                                    Now</a></button> --}}
                         </div>
                     </div>
 
@@ -175,8 +178,9 @@
                             </div>
                         </div>
                         <div class="col-sm-3 text-right">
-                            <button class="btn btn-primary"><a href="mailto:Dave@Dizams.Com" style="color: white;">Apply
-                                    Now</a></button>
+                            <button class="btn btn-primary" onclick="openForm()">Apply Now</button>
+                            {{-- <button class="btn btn-primary"><a href="mailto:Dave@Dizams.Com" style="color: white;">Apply
+                                    Now</a></button> --}}
                         </div>
                     </div>
 
@@ -217,7 +221,74 @@
             </div>
         </div>
     </div>
+    {{--  --}}
+    <div id="popupForm"
+        style="display:none; position:fixed; top:30%; left:50%; transform:translate(-50%, -30%);
+    background:white; padding:20px; box-shadow:0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius:8px; z-index:1000; opacity:1;">
+        <h3 style="color:#ff545a">Apply for Job</h3><br>
+        <button type="button" class="close" data-dismiss="modal" onclick="closeForm()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <form id="jobForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" class="form-control" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="resume">Resume (PDF/DOC)</label>
+                <input type="file" class="form-control" id="resume" name="resume" accept=".pdf,.doc,.docx"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" id="description" name="description" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button><br>
+            <br>
+            <button type="button" class="btn btn-secondary" onclick="closeForm()">Cancel</button>
+        </form>
+    </div>
+    <script>
+        function openForm() {
+            document.getElementById('popupForm').style.display = 'block';
+        }
 
+        function closeForm() {
+            document.getElementById('popupForm').style.display = 'none';
+        }
+
+        document.getElementById('jobForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+
+            try {
+                const response = await fetch('/api/jobs', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    alert('Application submitted successfully!');
+                    closeForm();
+                    e.target.reset();
+                } else {
+                    alert('Failed to submit application.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Something went wrong.');
+            }
+        });
+    </script>
     <style>
         .panel {
             margin-bottom: 20px;
@@ -243,9 +314,6 @@
             margin-right: 10px;
         }
 
-        /* .btn-primary {
-                                                                                                                                                                                                                                                                                                                                                                                                                    padding: 8px 20px;
-                                                                                                                                                                                                                                                                                                                                                                                                                } */
 
         @media (max-width: 768px) {
             .text-right {
