@@ -1,5 +1,6 @@
 @extends('frontend.layouts.app')
 @section('title', 'jobs-openings')
+
 @section('content')
 
     <section id="home" class="welcome-about">
@@ -10,217 +11,142 @@
         </div>
     </section><br>
     <div class="container">
-        <!-- Job Listings -->
-        <div class="job-listings">
-            <!-- Job 1 -->
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-sm-9">
-                            <h2 style="margin-top: 0;color:#ff545a;">
-                                Ophthalmologist - Glaucoma Or Comprehensive
-                            </h2><br>
-                            <div class="job-tags" style="margin-bottom: 15px;">
-                                <span class="label label-default">Hyattsville, Maryland</span>
-                                <span class="label label-primary">Full Time</span>
-                                <span class="label label-info">Physicians/Surgeons</span>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 text-right">
-                            <button class="btn btn-primary" onclick="openForm()">Apply Now</button>
-                            {{-- <button class="btn btn-primary"><a href="mailto:Dave@Dizams.Com" style="color: white;">Apply
-                                    Now</a></button> --}}
+        <div class="job-filters panel panel-default" style="padding: 20px; margin: 20px 0;">
+            <form id="jobFilterForm">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="titleFilter">Job Title</label>
+                            <input type="text" class="form-control" id="titleFilter" placeholder="Search by title">
                         </div>
                     </div>
-
-                    <p class="text-muted">Our client is seeking a comprehensive, board certified, or board-eligible
-                        Ophthalmologist with a fellowship training...</p><br>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h4>Requirements:</h4><br>
-                            <ul class="list-unstyled">
-                                <li><i class="fa fa-check text-success"></i> Fellowship Trained</li>
-                                <li><i class="fa fa-check text-success"></i> Board Certified in Ophthalmology</li>
-                                <li><i class="fa fa-check text-success"></i> Hold state Licensure in Maryland</li>
-                            </ul>
-                        </div><br>
-                        <div class="col-md-6">
-                            <h4>Benefits:</h4><br>
-                            <ul class="list-unstyled">
-                                <li><i class="fa fa-star text-warning"></i> Competitive Salary Package</li>
-                                <li><i class="fa fa-star text-warning"></i> Paid Time Off</li>
-                                <li><i class="fa fa-star text-warning"></i> Health & Dental Benefits</li>
-                                <li><i class="fa fa-star text-warning"></i> 401K Match</li>
-                                <li><i class="fa fa-star text-warning"></i> Employee and Family Discounts</li>
-                            </ul>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="locationFilter">Location</label>
+                            <input type="text" class="form-control" id="locationFilter" placeholder="Search by location">
                         </div>
                     </div>
-                    <button class="btn btn-primary">Show More...</button><br>
-                    <hr>
-                    <p class="text-muted">
-                        To apply, please send your application to:
-                        <a href="mailto:Dave@Dizams.Com">Dave@Dizams.Com</a>
-                    </p>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="jobTypeFilter">Job Type</label>
+                            <select class="form-control" id="jobTypeFilter">
+                                <option value="">All Types</option>
+                                <option value="Full Time">Full Time</option>
+                                <option value="Contract">Contract</option>
+                                <option value="C2H">C2H</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group button-group" style="margin-top: 25px;">
+                            <button type="submit" class="btn btn-primary btn-sm">Search</button>
+                            <button type="button" class="btn btn-default btn-sm" onclick="clearFilters()">Clear</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Job 2 -->
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-sm-9">
-                            <h2 style="margin-top: 0;color:#ff545a;">
-                                Medical Call Center Manager
-                            </h2><br>
-                            <div class="job-tags" style="margin-bottom: 15px;">
-                                <span class="label label-default">Hyattsville, Maryland</span>
-                                <span class="label label-primary">Full Time</span>
-                                <span class="label label-info">Call Center</span>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 text-right">
-                            <button class="btn btn-primary" onclick="openForm()">Apply Now</button>
-                            {{-- <button class="btn btn-primary"><a href="mailto:Dave@Dizams.Com" style="color: white;">Apply
-                                    Now</a></button> --}}
-                        </div>
-                    </div>
-
-                    <p class="text-muted">We are seeking a compassionate and skilled Customer Care Agent to join our
-                        dedicated medical call center team...</p><br>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h4>Key Responsibilities:</h4><br>
-                            <ul class="list-unstyled">
-                                <li><i class="fa fa-tasks text-info"></i> Act as the initial point of contact for customer
-                                    inquiries</li>
-                                <li><i class="fa fa-tasks text-info"></i> Provide empathetic support</li>
-                                <li><i class="fa fa-tasks text-info"></i> Ensure customer satisfaction</li>
-                            </ul>
-                        </div>
-                    </div><br>
-                    <button class="btn btn-primary">Show More...</button><br>
-                    <hr>
-                    <p class="text-muted">
-                        To apply, please send your application to:
-                        <a href="mailto:Dave@Dizams.Com">Dave@Dizams.Com</a>
-                    </p>
-                </div>
-            </div>
-
-            {{-- job3 --}}
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-sm-9">
-                            <h2 style="margin-top: 0;color:#ff545a;">
-                                Bookkeeper – Accounting & Administrative Support
-                            </h2><br>
-                            <div class="job-tags" style="margin-bottom: 15px;">
-                                <span class="label label-default">Onsite</span>
-                                <span class="label label-primary">Full Time</span>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 text-right">
-                            <button class="btn btn-primary" onclick="openForm()">Apply Now</button>
-                            {{-- <button class="btn btn-primary"><a href="mailto:Dave@Dizams.Com" style="color: white;">Apply
-                                    Now</a></button> --}}
-                        </div>
-                    </div>
-
-                    <p class="text-muted">Our client is seeking a detail-oriented and reliable Bookkeeper to join our
-                        Accounting Department. This role involves managing essential bookkeeping tasks, assisting in
-                        financial reporting, and supporting HR-related activities...</p><br>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h4>Requirements:</h4><br>
-                            <ul class="list-unstyled">
-                                <li><i class="fa fa-check text-success"></i>Proficiency in accounting software and MS
-                                    Office Suite, particularly Excel</li>
-                                <li><i class="fa fa-check text-success"></i>Strong attention to detail, accuracy, and
-                                    confidentiality</li>
-                                <li><i class="fa fa-check text-success"></i>Excellent organizational and time-management
-                                    skills</li>
-                            </ul>
-                        </div><br>
-                        <div class="col-md-6">
-                            <h4>Benefits:</h4><br>
-                            <ul class="list-unstyled">
-                                <li><i class="fa fa-star text-warning"></i> 401(k)</li>
-                                <li><i class="fa fa-star text-warning"></i> Dental insurance</li>
-                                <li><i class="fa fa-star text-warning"></i> Health insurance</li>
-                                <li><i class="fa fa-star text-warning"></i> Paid time off</li>
-                                <li><i class="fa fa-star text-warning"></i> Monday to Friday</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary">Show More...</button><br>
-                    <hr>
-                    <p class="text-muted">
-                        To apply, please send your application to:
-                        <a href="mailto:Dave@Dizams.Com">Dave@Dizams.Com</a>
-                    </p>
-                </div>
-            </div>
-            {{-- job4 --}}
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-sm-9">
-                            <h2 style="margin-top: 0;color:#ff545a;">
-                                Optician
-                            </h2><br>
-                            <div class="job-tags" style="margin-bottom: 15px;">
-                                <span class="label label-default">Onsite</span>
-                                <span class="label label-primary">Full Time</span>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 text-right">
-                            <button class="btn btn-primary" onclick="openForm()">Apply Now</button>
-                            {{-- <button class="btn btn-primary"><a href="mailto:Dave@Dizams.Com" style="color: white;">Apply
-                                    Now</a></button> --}}
-                        </div>
-                    </div>
-
-                    <p class="text-muted">We are seeking a skilled and customer-oriented Optician to join our team...</p>
-                    <br>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h4>Requirements:</h4><br>
-                            <ul class="list-unstyled">
-                                <li><i class="fa fa-check text-success"></i>Previous experience as an Optician or in a
-                                    related field is preferred.</li>
-                                <li><i class="fa fa-check text-success"></i>Knowledge of medical terminology related to
-                                    ophthalmology is a plus.</li>
-                                <li><i class="fa fa-check text-success"></i>Strong retail sales experience with a focus on
-                                    customer service excellence.</li>
-                            </ul>
-                        </div><br>
-                        <div class="col-md-6">
-                            <h4>Benefits:</h4><br>
-                            <ul class="list-unstyled">
-                                <li><i class="fa fa-star text-warning"></i> 401(k)</li>
-                                <li><i class="fa fa-star text-warning"></i> 401(k) matching</li>
-                                <li><i class="fa fa-star text-warning"></i> Dental insurance</li>
-                                <li><i class="fa fa-star text-warning"></i> Employee discount</li>
-                                <li><i class="fa fa-star text-warning"></i> Health insurance</li>
-                                <li><i class="fa fa-star text-warning"></i> Paid time off</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary">Show More...</button><br>
-                    <hr>
-                    <p class="text-muted">
-                        To apply, please send your application to:
-                        <a href="mailto:Dave@Dizams.Com">Dave@Dizams.Com</a>
-                    </p>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
+
+    <div class="container">
+        <!-- Job Listings -->
+        <div class="job-listings">
+            {{-- jobs/index.blade.php --}}
+
+            @foreach ($jobs as $job)
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <h2 style="margin-top: 0;color:#ff545a;">
+                                    {{ $job->title }}
+                                </h2><br>
+                                <div class="job-tags" style="margin-bottom: 15px;">
+                                    <span class="label label-default">{{ $job->location }}</span>
+                                    <span class="label label-primary">{{ $job->job_type }}</span>
+                                    <span class="label label-info">{{ $job->category }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="text-muted">{{ Str::limit($job->description, 150) }}</p><br>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Requirements:</h4><br>
+                                <ul class="list-unstyled">
+                                    <p>{!! nl2br($job->requirements) !!}</p>
+
+                                </ul>
+                            </div><br>
+                            @if ($job->benefits !== null && !empty($job->benefits))
+                                <div class="col-md-6">
+                                    <h4>Benefits:</h4><br>
+                                    <ul class="list-unstyled">
+                                        <p>{!! nl2br($job->benefits) !!}</p>
+                                    </ul>
+                                </div>
+                            @endif
+                        </div>
+
+                        <button type="button" class="btn btn-link" data-toggle="modal"
+                            data-target="#jobDetailsModal{{ $job->id }}">
+                            Show More...
+                        </button>
+                        <hr>
+                        <p class="text-muted">
+                            <button class="btn btn-primary" onclick="openForm()">Apply Now</button>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Modal for each job -->
+                <div class="modal fade" id="jobDetailsModal{{ $job->id }}" tabindex="-1" role="dialog"
+                    aria-labelledby="jobDetailsModalLabel{{ $job->id }}">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title" id="jobDetailsModalLabel{{ $job->id }}">{{ $job->title }}
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4>Job Details</h4><br>
+                                        <p><strong>Location:</strong> {{ $job->location }}</p>
+                                        <p><strong>Job Type:</strong> {{ $job->job_type }}</p>
+                                        <p><strong>Category:</strong> {{ $job->category }}</p>
+                                        <br>
+                                        <h4>Job description</h4><br>
+                                        <p>{{ $job->description }}</p>
+                                        <br>
+
+                                        <h4>Responsibilities:</h4><br>
+                                        <p>{!! nl2br($job->responsibilities) !!}</p>
+                                        <br>
+
+                                        <p><strong>Job Type: </strong>{{ $job->job_type }}</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary"
+                                    onclick="window.location.href='mailto:{{ $job->application_email }}'">Apply
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+
+    <!-- Modal -->
     {{--  --}}
     <div id="popupForm"
         style="display:none; position:fixed; top:30%; left:50%; transform:translate(-50%, -30%);
@@ -258,6 +184,62 @@
         </form>
     </div>
     <script>
+        document.getElementById('jobFilterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            filterJobs();
+        });
+
+        function filterJobs() {
+            const title = document.getElementById('titleFilter').value.toLowerCase().trim();
+            const location = document.getElementById('locationFilter').value.toLowerCase().trim();
+            const jobType = document.getElementById('jobTypeFilter').value.toLowerCase().trim();
+
+            const jobListings = document.querySelectorAll('.job-listings .panel.panel-default');
+
+            jobListings.forEach(job => {
+                const jobTitle = job.querySelector('h2').textContent.toLowerCase().trim();
+                const jobLocation = job.querySelector('.label.label-default').textContent.toLowerCase().trim();
+                const jobTypeText = job.querySelector('.label.label-primary').textContent.toLowerCase().trim();
+
+                const titleMatch = title === '' || jobTitle.includes(title);
+                const locationMatch = location === '' || jobLocation.includes(location);
+                const typeMatch = jobType === '' || jobTypeText.includes(jobType);
+
+                if (titleMatch && locationMatch && typeMatch) {
+                    job.style.display = 'block';
+                } else {
+                    job.style.display = 'none';
+                }
+
+                console.log('Job:', {
+                    title: jobTitle,
+                    searchTitle: title,
+                    titleMatch: titleMatch,
+                    location: jobLocation,
+                    searchLocation: location,
+                    locationMatch: locationMatch,
+                    type: jobTypeText,
+                    searchType: jobType,
+                    typeMatch: typeMatch,
+                    visible: job.style.display === 'block'
+                });
+            });
+        }
+
+        function clearFilters() {
+            document.getElementById('jobFilterForm').reset();
+
+            const jobListings = document.querySelectorAll('.job-listings .panel.panel-default');
+            jobListings.forEach(job => {
+                job.style.display = 'block';
+            });
+        }
+
+        document.getElementById('titleFilter').addEventListener('input', filterJobs);
+        document.getElementById('locationFilter').addEventListener('input', filterJobs);
+        document.getElementById('jobTypeFilter').addEventListener('change', filterJobs);
+    </script>
+    <script>
         function openForm() {
             document.getElementById('popupForm').style.display = 'block';
         }
@@ -290,6 +272,17 @@
         });
     </script>
     <style>
+        .button-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .btn-sm {
+            padding: 5px 15px;
+            font-size: 14px;
+        }
+
         .panel {
             margin-bottom: 20px;
             transition: box-shadow 0.3s ease;

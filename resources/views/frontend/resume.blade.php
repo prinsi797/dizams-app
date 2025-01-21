@@ -71,8 +71,8 @@
                                 <i class="fa fa-book icon"></i>
                                 {{-- <i class="flaticon-restaurant"></i> --}}
                             </div>
-                            <h2><a href="#">resume writing</a></h2>
-                            <p>150 listings</p>
+                            <h2><a href="{{ route('resume') }}">resume writing</a></h2>
+                            {{-- <p>150 listings</p> --}}
                         </div>
                     </li>
                     <li>
@@ -80,8 +80,8 @@
                             <div class="single-list-topics-icon">
                                 <i class="fa fa-briefcase"></i>
                             </div>
-                            <h2><a href="#">job openings</a></h2>
-                            <p>214 listings</p>
+                            <h2><a href="{{ route('jobs.opening') }}">job openings</a></h2>
+                            {{-- <p>214 listings</p> --}}
                         </div>
                     </li>
                     <li>
@@ -90,7 +90,7 @@
                                 <i class="fa fa-users"></i>
                             </div>
                             <h2><a href="#">human resources</a></h2>
-                            <p>185 listings</p>
+                            {{-- <p>185 listings</p> --}}
                         </div>
                     </li>
                     <li>
@@ -98,8 +98,8 @@
                             <div class="single-list-topics-icon">
                                 <i class="fa fa-line-chart"></i>
                             </div>
-                            <h2><a href="#">career development</a></h2>
-                            <p>200 listings</p>
+                            <h2><a href="https://linkedin.com/in/divyanshu007bansal/">career development</a></h2>
+                            {{-- <p>200 listings</p> --}}
                         </div>
                     </li>
                 </ul>
@@ -156,7 +156,6 @@
             </div>
         </div>
     </div>
-
 
     <!-- Career Development Coaching Modal -->
     <div class="modal fade" id="careerModal" role="dialog" tabindex="-1" aria-labelledby="careerModalLabel"
@@ -265,57 +264,30 @@
             </div><!--/.section-header-->
             <div class="works-content">
                 <div class="row">
-                    <div class="col-md-4 col-sm-6">
-                        <div class="single-how-works">
-                            <div class="single-how-works-icon">
-                                <i class="fas fa-lightbulb"></i>
+                    @foreach ($packages as $package)
+                        <div class="col-md-4 col-sm-6">
+                            <div class="single-how-works">
+                                <div class="single-how-works-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <h2><a href="#">{{ $package->title }}</a></h2>
+                                <p>
+                                    Was ${{ $package->original_price }} → Now ${{ $package->discounted_price }}
+                                    ({{ round((($package->original_price - $package->discounted_price) / $package->original_price) * 100) }}%
+                                    off)
+                                </p>
+
+                                <p>
+                                    ${{ $package->per_resume_price }}/Resume
+                                </p>
+                                <button class="welcome-hero-btn how-work-btn"
+                                    onclick="openRangeModal('{{ $package->modal_type }}')">
+                                    Order Now
+                                </button>
                             </div>
-                            <h2><a href="#">Only 1 resume</a></h2>
-                            <p>
-                                Was $20 → Now $10 (50% off)
-                            </p>
-                            <p>
-                                $10/Resume
-                            </p>
-                            <button class="welcome-hero-btn how-work-btn" onclick="openRangeModal('single')">
-                                Order Now
-                            </button>
                         </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="single-how-works">
-                            <div class="single-how-works-icon">
-                                <i class="fas fa-lightbulb"></i>
-                            </div>
-                            <h2><a href="#">12 Resumes in a bulk </a></h2>
-                            <p>
-                                Was $200 → Now $100 (50% off)
-                            </p>
-                            <p>
-                                $8.3/Resume
-                            </p>
-                            <button class="welcome-hero-btn how-work-btn" onclick="openRangeModal('bulk12')">
-                                Order Now
-                            </button>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="single-how-works">
-                            <div class="single-how-works-icon">
-                                <i class="fas fa-lightbulb"></i>
-                            </div>
-                            <h2><a href="#">35 resumes in a bulk</a></h2>
-                            <p>
-                                Was $500 → Now $250 (50% off)
-                            </p>
-                            <p>
-                                $7.1/Resume
-                            </p>
-                            <button class="welcome-hero-btn how-work-btn" onclick="openRangeModal('bulk35')">
-                                Order Now
-                            </button>
-                        </div>
-                    </div>
+                    @endforeach
+
                 </div>
             </div>
         </div><!--/.container-->

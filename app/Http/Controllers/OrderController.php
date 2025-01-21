@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OrderNotification;
 use App\Models\Order;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller {
     public function orderStore(Request $request) {
@@ -30,6 +32,9 @@ class OrderController extends Controller {
                 'phone' => $request->phone,
                 'total_amount' => $request->amount
             ]);
+            // Mail::to('prinsi@kryzetech.com')->send(new OrderNotification($order));
+            $ownerEmail = 'prinsi@kryzetech.com';
+            Mail::to($ownerEmail)->send(new OrderNotification($order));
 
             return response()->json([
                 'message' => 'Order created successfully',

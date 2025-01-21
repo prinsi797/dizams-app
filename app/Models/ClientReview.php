@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class ClientReview extends Model {
     use HasFactory;
-    protected $fillable = ['image', 'name', 'location', 'description', 'rating'];
+    protected $fillable = ['image', 'name', 'location', 'description', 'rating', 'approved'];
 }

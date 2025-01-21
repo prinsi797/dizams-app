@@ -33,7 +33,8 @@
                         </td>
                         <td>
                             <a href="{{ route('articles.edit', $article) }}" class="btn btn-secondary btn-sm">Edit</a>
-                            <form action="{{ route('articles.destroy', $article) }}" method="POST" style="display:inline;">
+                            <form action="{{ route('articles.destroy', $article) }}" method="POST" class="delete-form"
+                                style="display:inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">Delete</button>
@@ -44,4 +45,26 @@
             </tbody>
         </table>
     </div>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            const deleteForms = document.querySelectorAll('.delete-form');
+
+            deleteForms.forEach(function(form) {
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    swal({
+                        title: 'Are you sure?',
+                        text: 'This review will be permanently deleted!',
+                        icon: 'warning',
+                        buttons: ['Cancel', 'Yes, delete it!'],
+                        dangerMode: true,
+                    }).then((willDelete) => {
+                        if (willDelete) {
+                            form.submit();
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 @endsection

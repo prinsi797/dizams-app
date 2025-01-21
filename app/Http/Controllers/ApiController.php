@@ -8,10 +8,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
-class ApiController extends Controller
-{
-    public function register(Request $request)
-    {
+class ApiController extends Controller {
+    public function register(Request $request) {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -37,8 +35,7 @@ class ApiController extends Controller
     }
 
     // User Login
-    public function login(Request $request)
-    {
+    public function login(Request $request) {
         $credentials = $request->only('email', 'password');
 
         if (!$token = JWTAuth::attempt($credentials)) {
@@ -52,14 +49,12 @@ class ApiController extends Controller
     }
 
     // Get Authenticated User
-    public function user()
-    {
+    public function user() {
         return response()->json(JWTAuth::user());
     }
 
     // Logout User
-    public function logout()
-    {
+    public function logout() {
         JWTAuth::invalidate(JWTAuth::getToken());
         return response()->json(['message' => 'Successfully logged out']);
     }

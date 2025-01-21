@@ -11,6 +11,7 @@
         "laravel/framework": "^9.0",
         "laravel/sanctum": "^2.14",
         "laravel/tinker": "^2.7",
+       "maatwebsite/excel": "^3.1",
         "tymon/jwt-auth": "^2.1"
     },
     "require-dev": {
@@ -26,7 +27,11 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+        "app/Helpers/SettingHelper.php"
+    ]
+
     },
     "autoload-dev": {
         "psr-4": {

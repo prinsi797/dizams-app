@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\JobsNotification;
 use App\Models\Job;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class JobController extends Controller {
     public function store(Request $request) {
@@ -24,6 +26,9 @@ class JobController extends Controller {
             'description' => $request->description,
             'resume' => $resumePath,
         ]);
+
+        // $ownerEmail = 'prinsi@kryzetech.com';
+        // Mail::to($ownerEmail)->send(new JobsNotification($job->all()));
 
         return response()->json(['message' => 'Application submitted successfully!', 'job' => $job], 201);
     }

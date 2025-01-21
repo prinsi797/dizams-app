@@ -11,10 +11,11 @@
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                         <i class="fa fa-bars"></i>
                     </button>
-                    {{-- <img src="{{ asset('assets/images/favicon.png') }}" alt="Icon"
-                                style="width: 90px; height: 30px;"> --}}
-                    <a class="navbar-brand" href="index.html">Di<span>zams</span></a>
-
+                    <a class="navbar-brand" href="{{ route('home') }}">
+                        <img src="{{ asset('assets/images/favicon.png') }}" alt="Icon"
+                            style="width: 40px; height: 30px; display: inline-block; vertical-align: middle;">
+                        Di<span>zams</span>
+                    </a>
                 </div><!--/.navbar-header-->
                 <!-- End Header Navigation -->
 
@@ -22,10 +23,10 @@
                 <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
                     <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
                         <li class=" scroll active"><a href="{{ route('home') }}">home</a></li>
-                        <li class="scroll"><a href="#works">how it works</a></li>
+                        {{-- <li class="scroll"><a href="#works">how it works</a></li> --}}
                         {{-- <li class="scroll"><a href="#explore">explore</a></li> --}}
                         <li class="scroll"><a href="{{ route('jobs.opening') }}">Job Openings</a></li>
-                        <li class="scroll"><a href="#reviews">review</a></li>
+                        {{-- <li class="scroll"><a href="{{ route('home') }}">review</a></li> --}}
                         <li class="scroll"><a href="{{ route('resume') }}">Resume Writing</a></li>
                         <li class="scroll"><a href="{{ route('contact') }}">Contact</a></li>
                     </ul><!--/.nav -->

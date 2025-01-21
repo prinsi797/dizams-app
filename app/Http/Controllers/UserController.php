@@ -49,9 +49,6 @@ class UserController extends Controller {
         return redirect()->route('users.index')->with('success', 'User created successfully!');
     }
 
-    public function show(User $user) {
-        return view('users.show', compact('user'));
-    }
 
     public function edit(User $user) {
         return view('users.edit', compact('user'));
@@ -69,6 +66,7 @@ class UserController extends Controller {
             'name' => $request->name,
             'email' => $request->email,
             'role' => $request->role,
+            'password' => Hash::make($request->password),
         ]);
 
         // Handle image updates

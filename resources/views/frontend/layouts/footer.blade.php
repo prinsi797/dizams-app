@@ -13,7 +13,7 @@
                         <a class="navbar-brand" href="index.html">Di<span>zams</span></a>
                     </div><!--/.navbar-header-->
                 </div>
-                <div class="col-sm-9">
+                {{-- <div class="col-sm-9">
                     <ul class="footer-menu-item">
                         <li class="scroll"><a href="#works">how it works</a></li>
                         <li class="scroll"><a href="#explore">explore</a></li>
@@ -22,7 +22,7 @@
                         <li class="scroll"><a href="#contact">contact</a></li>
                         <li class=" scroll"><a href="#contact">my account</a></li>
                     </ul><!--/.nav -->
-                </div>
+                </div> --}}
             </div>
         </div>
         <div class="hm-footer-copyright">
@@ -35,7 +35,6 @@
                 </div>
                 <div class="col-sm-7">
                     <div class="footer-social">
-                        <span><i class="fa fa-phone"> WhatsApp +91 81718-10360</i></span>
                         <a href="#"><i class="fa fa-facebook"></i></a>
                         <a href="#"><i class="fa fa-twitter"></i></a>
                         <a href="https://www.linkedin.com/company/105334589/"><i class="fa fa-linkedin"></i></a>

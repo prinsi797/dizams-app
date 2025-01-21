@@ -1,8 +1,21 @@
 @extends('frontend.layouts.app')
 @section('title', 'Contact Us')
+<style>
+    .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
 
+    /* Responsive design for smaller screens */
+    @media (max-width: 768px) {
+        .contact-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
 @section('content')
-    <section id="home" class="welcome-about">
+    <section id="home" class="welcome-about2">
         <div class="container">
             <div class="welcome-about-txt">
                 <h2>Contact Us</h2>
@@ -18,21 +31,31 @@
 
         <div class="contact-section">
             <!-- Contact Information -->
+            {{-- {{ $settings }} --}}
             <div class="contact-info">
                 <div class="single_wrapper">
                     <h4>Call Us</h4>
-                    <p><i class="glyphicon glyphicon-earphone"></i> +91-8171810360</p>
-                    <p><i class="glyphicon glyphicon-earphone"></i> +1 (650) 254-9452</p>
+                    @if ($settings->has('Call Us'))
+                        @foreach ($settings['Call Us'] as $callUs)
+                            <p><i class="glyphicon glyphicon-earphone"></i> {{ $callUs->value }}</p>
+                        @endforeach
+                    @endif
                 </div>
                 <div class="single_wrapper">
                     <h4>Email</h4>
-                    <p><i class="glyphicon glyphicon-envelope"></i> admin@dizams.com</p>
+                    @if ($settings->has('Email'))
+                        @foreach ($settings['Email'] as $email)
+                            <p><i class="glyphicon glyphicon-envelope"></i> {{ $email->value }}</p>
+                        @endforeach
+                    @endif
                 </div>
                 <div class="single_wrapper">
                     <h4>Office</h4>
-                    <p><i class="glyphicon glyphicon-map-marker"></i> 11-B Shanti Nagar, Maholi Road, Mathura 281001</p>
-                    <p><i class="glyphicon glyphicon-map-marker"></i> Sector 62, Noida 201309</p>
-                    <p><i class="glyphicon glyphicon-map-marker"></i> Bentonville, A, USA 72712</p>
+                    @if ($settings->has('Office'))
+                        @foreach ($settings['Office'] as $office)
+                            <p><i class="glyphicon glyphicon-map-marker"></i> {{ $office->value }}</p>
+                        @endforeach
+                    @endif
                 </div>
             </div>
 
@@ -73,7 +96,7 @@
         </div>
     </div>
     {{-- abouts  --}}
-    <section id="home" class="welcome-about">
+    <section id="home" class="welcome-about3">
         <div class="container">
             <div class="welcome-about-txt">
                 <h2>About Us</h2>
@@ -81,28 +104,49 @@
         </div>
     </section>
     <div class="contact-section">
-        <!-- Contact Information -->
-        <div class="contact-info">
-            <div class="single_wrapper">
-                <p>At <span style="color: #ff545a;">Dizams,</span> we specialize in crafting professional, SEO-optimized
-                    resumes designed to meet
-                    industry-specific recruitment standards. Our tailored approach ensures your resume not only showcases
-                    your skills and achievements effectively but also ranks higher in recruiter searches on platforms like
-                    <span style="color: #ff545a;">Dice, Monster, TechFetch, CareerBuilder, CEIPAL, </span> more.
-                </p>
-            </div>
-        </div>
-        <div class="contact-info">
-            <div class="single_wrapper">
-                <p>With our expertise,<span style="color: #ff545a;"> your resume gains a 170% </span> in visibility, making
-                    it significantly more likely
-                    to catch the attention of hiring managers during their screening process. By aligning your resume with
-                    the latest recruitment trends and search algorithms, we help you stand out in a competitive job market
-                    and secure more opportunities for interviews and <span style="color: #ff545a;">career growth.</span>
-                    Let us empower your career journey by creating a resume that truly sets you apart.</p>
-            </div>
+        <div class="contact-grid">
+            @foreach ($abouts as $about)
+                <div class="contact-info" style="width:100%;">
+                    <div class="single_wrapper">
+                        <p>{!! nl2br(e($about->value)) !!}</p>
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            if (document.getElementById('consent').checked) {
+                // Get form data
+                const formData = new FormData(this);
+                const name = formData.get('name');
+                const email = formData.get('email');
+                const phone = formData.get('phone');
+                const subject = formData.get('subject');
+                const message = formData.get('message');
+
+                // Build the WhatsApp message
+                const messageBody =
+                    `*Contact Details*\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nSubject: ${subject}\nMessage: ${message}`;
+
+                // WhatsApp number
+                const phoneNumber = '7041134556'; // Your WhatsApp number
+
+                // Build the URL to open WhatsApp with pre-filled message
+                const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(messageBody)}`;
+
+                // Redirect to WhatsApp with the pre-filled message
+                window.open(url, '_blank');
+
+                // Submit the form after sending the message
+                this.submit();
+            } else {
+                alert('Please check the consent checkbox before submitting.');
+            }
+        });
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const alerts = document.getElementsByClassName('alert alert-success');

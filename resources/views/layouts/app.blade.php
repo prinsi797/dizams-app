@@ -4,9 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Dizams - Admin</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.css">
+
 </head>
 
 <body>
@@ -37,8 +41,23 @@
                                 style="color: #1b1e20;">Articles</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('orderprices.index') }}" style="color: #1b1e20;">Price
+                            <a class="nav-link" href="{{ route('resumes.index') }}" style="color: #1b1e20;">Resumes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('packages.index') }}" style="color: #1b1e20;">Price
                                 Edit</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('settings.index') }}" style="color: #1b1e20;">Setting
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('abouts.index') }}" style="color: #1b1e20;">About
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('jobs.index') }}" style="color: #1b1e20;">Jobs
+                            </a>
                         </li>
                     @endif
 
@@ -63,6 +82,8 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+
 </body>
 
 </html>

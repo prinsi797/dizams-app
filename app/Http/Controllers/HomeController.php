@@ -5,11 +5,17 @@ namespace App\Http\Controllers;
 use App\Mail\ContactNotification;
 use App\Mail\ResumeNotification;
 use App\Mail\SubscribeNotification;
+use App\Models\About;
 use App\Models\Article;
 use App\Models\ClientReview;
 use App\Models\Contact;
+use App\Models\JobOpening;
+use App\Models\Order;
+use App\Models\OrderPrice;
 use App\Models\Rating;
 use App\Models\Resume;
+use App\Models\ResumePackage;
+use App\Models\Setting;
 use App\Models\Subscribe;
 use App\Models\UnSubscribe;
 use Illuminate\Support\Facades\Mail;
@@ -17,19 +23,24 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller {
+
     public function index() {
-        $reviews = ClientReview::all();
+        $reviews = ClientReview::where('approved', 1)->get();
         $ratings = Rating::all();
         $articles = Article::all();
         return view('frontend.home', compact('reviews', 'articles', 'ratings'));
     }
 
     public function contact(Request $request) {
-        return view('frontend.contact');
+        $settings = Setting::all()->groupBy('keyword');
+        $abouts = About::all();
+        return view('frontend.contact', compact('settings', 'abouts'));
     }
 
     public function resume(Request $request) {
-        return view('frontend.resume');
+        $packages = ResumePackage::where('is_active', true)->get();
+        $orders = OrderPrice::all();
+        return view('frontend.resume', compact('orders', 'packages'));
     }
 
     public function about(Request $request) {
@@ -37,28 +48,11 @@ class HomeController extends Controller {
     }
 
     public function jobsOpening(Request $request) {
-        return view('frontend.jobs');
+        $jobs = JobOpening::where('is_active', true)->get();
+        return view('frontend.jobs', compact('jobs'));
     }
     // conatct page
     public function send(Request $request) {
-        // $request->validate([
-        //     'name' => 'required|string|max:255',
-        //     'email' => 'required|email',
-        //     'phone' => 'required',
-        //     'subject' => 'required|string|max:255',
-        //     'message' => 'required|string',
-        // ]);
-
-        // Contact::create([
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'phone' => $request->phone,
-        //     'subject' => $request->subject,
-        //     'message' => $request->message,
-        // ]);
-
-        // $ownerEmail = 'prinsi@kryzetech.com';
-        // Mail::to($ownerEmail)->send(new ContactNotification($request->all()));
 
         try {
             $validated = $request->validate([
@@ -112,10 +106,8 @@ class HomeController extends Controller {
             'job_description' => 'nullable|string',
         ]);
 
-        // Store the uploaded resume file
         $resumePath = $request->file('resume')->store('resumes', 'public');
 
-        // Store resume data in the database
         Resume::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -123,11 +115,10 @@ class HomeController extends Controller {
             'linkedin' => $request->linkedin,
             'education' => $request->education,
             'job_details' => $request->job_details,
-            'resume' => $resumePath,  // Store the resume file path
+            'resume' => $resumePath,
             'job_description' => $request->job_description,
         ]);
 
-        // Prepare the resume data to send in the email
         $resumeData = [
             'name' => $request->name,
             'email' => $request->email,
@@ -135,7 +126,7 @@ class HomeController extends Controller {
             'linkedin' => $request->linkedin,
             'education' => $request->education,
             'job_details' => $request->job_details,
-            'resume' => $resumePath,  // Include the resume file path in the email data
+            'resume' => $resumePath,
             'job_description' => $request->job_description,
         ];
 
@@ -145,5 +136,20 @@ class HomeController extends Controller {
 
 
         return redirect()->back()->with('success', 'Your resume has been submitted successfully!');
+    }
+    public function reviewStore(Request $request) {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
+            'description' => 'required|string',
+            'rating' => 'required|integer|min:1|max:5',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+        $data = $request->all();
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('posts', 'public'); // Store image in storage/app/public/posts
+        }
+        ClientReview::create($data);
+        return redirect()->back()->with('success', 'Review added successfully!');
     }
 }

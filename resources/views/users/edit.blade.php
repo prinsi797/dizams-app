@@ -53,7 +53,13 @@
                                                     value="{{ $user->email }}" required>
                                             </div>
                                         </div>
-
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="password" class="form-label">Password</label>
+                                                <input type="password" name="password" id="password" class="form-control"
+                                                    value="{{ $user->password }}" required>
+                                            </div>
+                                        </div>
                                         <div class="col-md-6 mt-3">
                                             <div class="form-group">
                                                 <label for="role" class="form-label">Role</label>

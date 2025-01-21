@@ -415,10 +415,50 @@ nav.navbar.bootsnav .navbar-toggle i {
 }
 
 /*.navbar-toggle */
+/* about */
+.welcome-about3{
+    position: relative;
+    background: url('/assets/images/about.webp') no-repeat;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    height: 300px;
+    z-index: 1;
+}
+.welcome-about3:before{
+    position: absolute;
+    content: " ";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    background: rgba(65, 73, 89, .65);
+    z-index: -1;
+}
+/* conatct */
+.welcome-about2{
+    position: relative;
+    background: url('/assets/images/contact.webp') no-repeat;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    height: 300px;
+    z-index: 1;
+}
+.welcome-about2:before{
+    position: absolute;
+    content: " ";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    background: rgba(65, 73, 89, .65);
+    z-index: -1;
+}
 /* abouts  */
 .welcome-about{
     position: relative;
-    /* background: url('/assets/images/aboutus.png') no-repeat; */
+    background: url('/assets/images/job.webp') no-repeat;
     background-position: center;
     background-size: cover;
     text-align: center;

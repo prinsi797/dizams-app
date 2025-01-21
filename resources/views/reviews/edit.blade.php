@@ -32,52 +32,6 @@
                         <div class="card-body">
                             <div class="row form_sec">
                                 <div class="col-12">
-                                    <h5>Review Details</h5>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="listings" class="form-label">Listings</label>
-                                                <input type="text" name="listings" class="form-control" id="listings"
-                                                    value="{{ $review->listings }}" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="categories" class="form-label">Categories</label>
-                                                <input type="text" name="categories" class="form-control" id="categories"
-                                                    value="{{ $review->categories }}" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="visitors" class="form-label">Visitors</label>
-                                                <input type="text" name="visitors" class="form-control" id="visitors"
-                                                    value="{{ $review->visitors }}" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="happy_client" class="form-label">Happy Client</label>
-                                                <input type="text" name="happy_client" class="form-control"
-                                                    id="happy_client" value="{{ $review->happy_client }}" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div><br>
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row form_sec">
-                                <div class="col-12">
                                     <h5>Basic Details</h5>
                                 </div>
                             </div>
@@ -107,6 +61,21 @@
                                                     max="5" id="rating" value="{{ $review->rating }}" required>
                                             </div>
                                         </div>
+                                        @if (auth()->user()->role === 'admin')
+                                            <div class="col-md-3 mt-3">
+                                                <div class="form-group">
+                                                    <label for="approved" class="form-label">Approval Status</label>
+                                                    <select name="approved" id="approved" class="form-control">
+                                                        <option value="1"
+                                                            {{ $review->approved == 1 ? 'selected' : '' }}>
+                                                            Approved</option>
+                                                        <option value="0"
+                                                            {{ $review->approved == 0 ? 'selected' : '' }}>
+                                                            Unapproved</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        @endif
 
                                         <div class="col-md-6 mt-3">
                                             <div class="form-group">
@@ -116,8 +85,8 @@
                                             <div class="mt-3">
                                                 @if ($review->image)
                                                     <div>
-                                                        <img src="{{ asset('storage/' . $review->image) }}"
-                                                            alt="Post Image" width="100">
+                                                        <img src="{{ asset('storage/' . $review->image) }}" alt="Post Image"
+                                                            width="100">
                                                     </div>
                                                 @endif
                                             </div>

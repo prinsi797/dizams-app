@@ -25,9 +25,8 @@
                 @endif
             </div>
             <div class="col-md-12 form_page">
-                <form action="{{ route('orderprices.update', $orderPrice->id) }}" method="POST">
+                <form action="{{ route('packages.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @method('PUT')
                     <div class="card">
                         <div class="card-body">
                             <div class="row form_sec">
@@ -40,26 +39,47 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="name" class="form-label">Name</label>
-                                                <input type="text" name="name" class="form-control"
-                                                    value="{{ $orderPrice->name }}" required>
+                                                <label for="title" class="form-label">Title</label>
+                                                <input type="text" name="title" class="form-control" required>
                                             </div>
                                         </div>
 
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="amount" class="form-label">Amount</label>
-                                                <input type="number" name="amount" class="form-control"
-                                                    value="{{ $orderPrice->amount }}" required>
+                                                <label for="resume_count" class="form-label">Resume Count</label>
+                                                <input type="number" name="resume_count" class="form-control" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="original_price" class="form-label">Original Price</label>
+                                                <input type="number" name="original_price" class="form-control" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="discounted_price" class="form-label">Discounted
+                                                    Price</label>
+                                                <input type="number" name="discounted_price" class="form-control" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="discount" class="form-label">Discount</label>
-                                                <input type="number" name="discount" class="form-control"
-                                                    value="{{ $orderPrice->discount }}" required>
+                                                <label for="per_resume_price" class="form-label">Per Resume
+                                                    Price</label>
+                                                <input type="number" name="per_resume_price" class="form-control" required>
                                             </div>
                                         </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="modal_type" class="form-label">modal_type</label>
+                                                <input type="text" name="modal_type" class="form-control" required>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -68,8 +88,9 @@
                     <div class="row">
                         <div class="col-md-12">
                             <button type="submit" class="btn btn-primary add_site">
-                                Update
+                                Save
                             </button>
+                            <a href="{{ route('packages.index') }}" class="btn btn-secondary">Back</a>
                         </div>
                     </div><br>
                 </form>

@@ -10,8 +10,21 @@ use Illuminate\Http\Request;
 class ClientReviewController extends Controller {
     public function index() {
         $reviews = ClientReview::all();
+        $pendingReviews = ClientReview::where('approved', 0)->get();
+        $notificationCount = $pendingReviews->count(); // Fetch pending reviews
+        // $notificationCount = $pendingReviews->count();
         $rating = Rating::find(1); // Fetch rating or define logic to retrieve it
-        return view('reviews.index', compact('reviews', 'rating'));
+        return view('reviews.index', compact('reviews', 'rating', 'notificationCount', 'pendingReviews'));
+    }
+
+    public function approve($id) {
+        $review = ClientReview::find($id);
+        if ($review) {
+            $review->approved = 1;
+            $review->save();
+            return response()->json(['success' => true]);
+        }
+        return response()->json(['success' => false]);
     }
 
     public function create() {
@@ -28,7 +41,7 @@ class ClientReviewController extends Controller {
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
         $data = $request->all();
-        // Handle image upload
+        $data['approved'] = $request->has('approved') ? 1 : 0;
         if ($request->hasFile('image')) {
             $data['image'] = $request->file('image')->store('posts', 'public'); // Store image in storage/app/public/posts
         }
@@ -48,28 +61,19 @@ class ClientReviewController extends Controller {
             'description' => 'required|string',
             'rating' => 'required|integer|min:1|max:5',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            // 'listings' => 'required|string',
-            // 'categories' => 'required|string',
-            // 'visitors' => 'required|string',
-            // 'happy_client' => 'required|string',
         ]);
 
         $data = $request->all();
+        $data['approved'] = $request->has('approved') ? 1 : 0;
 
-        // Handle image update
         if ($request->hasFile('image')) {
-            // Delete old image if it exists
             if ($review->image && Storage::exists('public/' . $review->image)) {
                 Storage::delete('public/' . $review->image);
             }
-
-            // Save new image
             $data['image'] = $request->file('image')->store('posts', options: 'public');
         }
 
-        // Update post details
         $review->update($data);
-        // $post->update($request->all());
         return redirect()->route('reviews.index')->with('success', value: 'Review updated successfully.');
     }
 

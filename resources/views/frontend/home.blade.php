@@ -1,34 +1,6 @@
 @extends('frontend.layouts.app')
 @section('title', 'Home')
-<style>
-    .text {
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        line-clamp: 2;
-        -webkit-box-orient: vertical;
-    }
 
-    .position-relative {
-        position: relative;
-    }
-
-    .left-side-ad {
-        position: absolute;
-        left: -320px;
-        top: 50px;
-        width: 300px;
-        height: 600px;
-        background: transparent;
-        z-index: 10;
-    }
-
-    @media (max-width: 1200px) {
-        .left-side-ad {
-            display: none;
-        }
-    }
-</style>
 @section('content')
     @push('scripts')
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8013371309995980"
@@ -37,20 +9,20 @@
     <section id="home" class="welcome-hero">
         <div class="container position-relative">
             <!-- Add this new div for the ad container -->
-            <div class="left-side-ad">
+            {{-- <div class="left-side-ad">
                 <ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px"
                     data-ad-client="ca-pub-8013371309995980" data-ad-slot="3767729937">
                 </ins>
                 <script>
                     (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
-            </div>
+            </div> --}}
 
             <div class="welcome-hero-txt">
                 <h2>best place to find Services in <br> Recruitment and Consulting</h2>
                 <p>
                     Find Resume Writing, Recruitment, Consulting, Placements, Career Services, and more in just one
-                    click re
+                    click
                 </p>
             </div>
             <div class="welcome-hero-serch-box">
@@ -117,7 +89,7 @@
                                 <i class="fa fa-book icon"></i>
                             </div>
                             <h2><a href="{{ route('resume') }}">resume writing</a></h2>
-                            <p>150 listings</p>
+
                         </div>
                     </li>
                     <li>
@@ -126,7 +98,7 @@
                                 <i class="fa fa-briefcase"></i>
                             </div>
                             <h2><a href="{{ route('jobs.opening') }}">job openings</a></h2>
-                            <p>214 listings</p>
+
                         </div>
                     </li>
                     <li>
@@ -135,7 +107,7 @@
                                 <i class="fa fa-users"></i>
                             </div>
                             <h2><a href="#">human resources</a></h2>
-                            <p>185 listings</p>
+
                         </div>
                     </li>
                     <li>
@@ -144,7 +116,7 @@
                                 <i class="fa fa-line-chart"></i>
                             </div>
                             <h2><a href="https://linkedin.com/in/divyanshu007bansal/">career development</a></h2>
-                            <p>200 listings</p>
+
                         </div>
                     </li>
                 </ul>
@@ -351,7 +323,7 @@
                         <li><span style="background-color: yellow;">ATS-friendly (Applicant Tracking System)</span> designs
                             to ensure your resume gets noticed.</li>
                     </ul>
-                    <img class="img-1" src="{{ asset('assets/images/works/resume.jpg') }}" alt="image"
+                    <img class="img-1" src="{{ asset('assets/images/works/Resume Writing.png') }}" alt="image"
                         loading="lazy" style="width: 100%; height: auto; max-height: 400px;"><br>
                     <br>
                     <p><strong>3. </strong>Content Optimization:</p>
@@ -368,13 +340,23 @@
             </div>
         </div>
     </div>
-    <!--/.works-->
-    <!--works end -->
+
     <!--reviews start -->
     <section id="reviews" class="reviews">
-        <div class="section-header">
+        {{-- <div class="section-header">
             <h2>Clients Reviews</h2>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addReviewModal">
+                Add Review
+            </button>
             <p>What our clients say about us</p>
+        </div> --}}
+        <div class="section-header clearfix">
+            <h2 class="pull-center">Clients Reviews</h2>
+            <p>What our clients say about us</p>
+            <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#addReviewModal"
+                style="margin-top: -56px;">
+                Add Review
+            </button>
         </div>
         <div class="reviews-content">
             <div class="testimonial-carousel" id="testimonial-carousel">
@@ -413,6 +395,57 @@
         </div>
     </section>
     <!--reviews end -->
+    <!-- Add Review Modal -->
+
+
+    <div class="modal fade" id="addReviewModal" tabindex="-1" role="dialog" aria-labelledby="addReviewModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form action="{{ route('reviews.store.user') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addReviewModalLabel">Add Review</h5>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Name Field -->
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <!-- Location Field -->
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" class="form-control" id="location" name="location" required>
+                        </div>
+                        <!-- Rating Field -->
+                        <div class="form-group">
+                            <label for="rating">Rating</label>
+                            <input type="number" name="rating" min="1" max="5" class="form-control"
+                                id="rating" required>
+                        </div>
+                        <!-- Image Field -->
+                        <div class="form-group">
+                            <label for="image">Image</label>
+                            <input type="file" class="form-control" name="image" id="image">
+                        </div>
+                        <!-- Description Field -->
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea type="text" name="description" rows="4" class="form-control" id="description" required></textarea>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button><br>
+                        <br>
+                        <button type="submit" class="btn btn-primary">Submit Review</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <!-- statistics strat -->
     <section id="statistics" class="statistics">
         <div class="container">
@@ -482,9 +515,10 @@
                                 <div class="single-blog-item-txt">
                                     <h2><a href="#">{{ $article->name }}</a></h2>
                                     <h4>posted <span>by:</span> <a href="#">{{ $article->author }}</a>
-                                        {{ \Carbon\Carbon::parse($article->posted_date)->format('F Y') }}</h4>
+                                        {{ \Carbon\Carbon::parse($article->posted_date)->format('F Y') }}
+                                    </h4>
                                     <p>
-                                        {{ $article->details }}
+                                        {{ \Str::words($article->details, 20, '...') }}
                                     </p>
                                 </div>
                             </div>
@@ -503,7 +537,9 @@
                     Do you want to explore job services with us?
                 </h2>
                 <p>
-                    Dizams offers you comprehensive resume writing services and career solutions, helping you
+                    Dizams offers you comprehensive resume writing services and career solutions,
+                    helping
+                    you
                     achieve
                     your professional goals effortlessly.
                 </p>
@@ -684,4 +720,63 @@
             }
         });
     </script>
+    <style>
+        .single-blog-item-img {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .single-blog-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+        }
+
+        .single-blog-item-img:hover img {
+            transform: scale(1.05);
+        }
+
+        .single-blog-item {
+            /* height: 100%; */
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .single-blog-item-txt {
+            padding: 15px;
+        }
+
+        .text {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .position-relative {
+            position: relative;
+        }
+
+        .left-side-ad {
+            position: absolute;
+            left: -320px;
+            top: 50px;
+            width: 300px;
+            height: 400px;
+            background: transparent;
+            z-index: 10;
+        }
+
+        @media (max-width: 1200px) {
+            .left-side-ad {
+                display: none;
+            }
+        }
+    </style>
 @endsection

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
 </head>
+
 <body>
     {{-- <div class="container mt-5">
         <h3>Login</h3>
@@ -22,9 +24,8 @@
         </form>
     </div> --}}
     <section class="login-content">
-
         <div class="text-center">
-            <h1 class="text-white mb-5">H U N D R E D</h1>
+            <h1 class="text-white mb-5">DIZAMS APP</h1>
             @if (session()->has('message'))
                 <p class="alert alert-info">{{ session()->get('message') }}</p>
             @endif
@@ -99,4 +100,5 @@
         </div>
     </section>
 </body>
+
 </html>
